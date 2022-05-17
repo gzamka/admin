@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
-import { actionCodeSettings, auth } from "./firebase/firebase.js";
+import { actionCodeSettings, auth, db } from "./firebase/firebase.js";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -9,6 +9,7 @@ import {
   isSignInWithEmailLink,
   signInWithEmailLink,
 } from "firebase/auth";
+import { collection, addDoc } from "firebase/firestore";
 
 const app = express();
 const router = express.Router();
@@ -21,6 +22,19 @@ app.use("/", router);
 app.listen(process.env.PORT, () => {
   console.log(`Example app listening on port ${process.env.PORT}`);
 });
+
+const addEmailtoFirebase = async (email) => {
+  try {
+    const docRef = await addDoc(collection(db, "userEmails"), {
+      email: email
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+    res.status(400).json({ success: false, error });
+  }
+}
+
 // CONTROLLER/////////////////////////////////////////// CONTROLLER
 const getCategories = (req, res, next) => {
   res.status(200).json({
@@ -42,7 +56,7 @@ const loginPost = (req, res, next) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log(user);
+      // console.log(user);
       res.status(200).json({ success: true, user });
       // ...
     })
@@ -61,7 +75,6 @@ const subscribeEmail = (req, res, next) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log("mail --  ", email);
       sendSignInLinkToEmail(auth, email, actionCodeSettings)
         .then(() => {
           // The link was successfully sent. Inform the user.
@@ -115,9 +128,8 @@ const checkValidate = (req, res, next) => {
         // Additional user info profile not available via:
         // result.additionalUserInfo.profile == null
         // You can ch,eck if the user is new or existing:
-        console.log(` result  ajillaj baina`);
-        // result.additionalUserInfo.isNewUser
-        console.log("result -- ", result);
+        console.log(`result ======================>`, result);
+        const add = await addEmailtoFirebase(email);
         res.status(200).json({
           success: true,
           message: "Amjilttai burtgullee",
@@ -130,7 +142,7 @@ const checkValidate = (req, res, next) => {
         res.status(400).json({ success: false, error });
       });
   } else {
-    res.status(200).json({ error: "Aldaa" });
+    res.status(200).json({ error: "False Aldaa" });
   }
 };
 
