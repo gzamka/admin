@@ -9,7 +9,7 @@ import {
   isSignInWithEmailLink,
   signInWithEmailLink,
 } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, getDoc } from "firebase/firestore";
 
 const app = express();
 const router = express.Router();
@@ -22,18 +22,24 @@ app.use("/", router);
 app.listen(process.env.PORT, () => {
   console.log(`Example app listening on port ${process.env.PORT}`);
 });
-
-const addEmailtoFirebase = async (email) => {
+const addEmailToFirebase = async (email) => {
   try {
-    const docRef = await addDoc(collection(db, "userEmails"), {
-      email: email
+    const docRef = await addDoc(collection(db, process.env.userCol), {
+      email: email,
     });
     console.log("Document written with ID: ", docRef.id);
   } catch (e) {
     console.error("Error adding document: ", e);
     res.status(400).json({ success: false, error });
   }
-}
+};
+
+// const readEmailFromFirebase = async () => {
+//   const userEmailsRef = collection(db, process.env.userCol);
+//   try{
+//     const docRef = doc(db, "cities", "SF");
+//   } catch(e){}
+// }
 
 // CONTROLLER/////////////////////////////////////////// CONTROLLER
 const getCategories = (req, res, next) => {
@@ -100,7 +106,7 @@ const subscribeEmail = (req, res, next) => {
     });
 };
 
-const checkValidate = (req, res, next) => {
+const checkValidate = async (req, res, next) => {
   const email = auth.currentUser.email;
   if (isSignInWithEmailLink(auth, `http://localhost:5500${req.url}`)) {
     console.log(` isSignInWithEmailLink  ajillaj baina`);
@@ -120,27 +126,25 @@ const checkValidate = (req, res, next) => {
       });
     }
     // The client SDK will parse the code from the link for you.
-    signInWithEmailLink(auth, email, `http://localhost:5500${req.url}`)
-      .then((result) => {
-        // Clear email from storage.
-        // window.localStorage.removeItem('emailForSignIn');
-        // You can access the new user via result.user
-        // Additional user info profile not available via:
-        // result.additionalUserInfo.profile == null
-        // You can ch,eck if the user is new or existing:
-        console.log(`result ======================>`, result);
-        const add = await addEmailtoFirebase(email);
-        res.status(200).json({
-          success: true,
-          message: "Amjilttai burtgullee",
-        });
-      })
-      .catch((error) => {
-        console.log(` result  aldaa shvv`);
-        // Some error occurred, you can inspect the code: error.code
-        // Common errors could be invalid email and invalid or expired OTPs.
-        res.status(400).json({ success: false, error });
+    console.log(auth, email, req.url);
+    try {
+      const result = await signInWithEmailLink(
+        auth,
+        email,
+        `http://localhost:5500${req.url}`
+      );
+      console.log(`result ======================>`, result);
+      await addEmailToFirebase(email);
+      res.status(200).json({
+        success: true,
+        message: "Amjilttai burtgullee",
       });
+    } catch (e) {
+      console.log(` result  aldaa shvv`);
+      // Some error occurred, you can inspect the code: error.code
+      // Common errors could be invalid email and invalid or expired OTPs.
+      res.status(400).json({ success: false, e });
+    }
   } else {
     res.status(200).json({ error: "False Aldaa" });
   }
