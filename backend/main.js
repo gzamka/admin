@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
-import { actionCodeSettings, auth, db } from "./firebase/firebase.js";
+import { actionCodeSettings, auth, db, storage } from "./firebase/firebase.js";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -10,6 +10,7 @@ import {
   signInWithEmailLink,
 } from "firebase/auth";
 import { collection, addDoc, doc, getDoc } from "firebase/firestore";
+import { async } from "@firebase/util";
 
 const app = express();
 const router = express.Router();
@@ -33,13 +34,6 @@ const addEmailToFirebase = async (email) => {
     res.status(400).json({ success: false, error });
   }
 };
-
-// const readEmailFromFirebase = async () => {
-//   const userEmailsRef = collection(db, process.env.userCol);
-//   try{
-//     const docRef = doc(db, "cities", "SF");
-//   } catch(e){}
-// }
 
 // CONTROLLER/////////////////////////////////////////// CONTROLLER
 const getCategories = (req, res, next) => {
@@ -91,7 +85,6 @@ const subscribeEmail = (req, res, next) => {
           // ...
         })
         .catch((error) => {
-          const errorCode = error.code;
           const errorMessage = error.message;
           res.status(400).json({ success: false, errorMessage });
           // ...
@@ -99,10 +92,13 @@ const subscribeEmail = (req, res, next) => {
       // ...
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      res.status(400).json({ success: false, errorMessage });
-      // ..
+      if(error.code === "auth/email-already-in-use"){
+        res.status(400).json({ success: false, errorMessage: 'Хэрэглэгч бүртгэлтэй байна.' });
+      }
+      else{
+        const errorMessage = error.message;
+        res.status(400).json({ success: false, errorMessage });
+      }
     });
 };
 
@@ -150,7 +146,14 @@ const checkValidate = async (req, res, next) => {
   }
 };
 
+const saveStorageData = async(req, res, next) => {
+  const product1Ref = ref(storage, 'products/product1');
+  // const product1Ref = ref(storage, )
+};
+
 // ROUTER/////////////////////////////////////////// ROUTER
 router.route("/").get(getCategories).post(subscribeEmail);
 router.route("/login").post(loginPost);
 router.route("/validate").get(checkValidate);
+
+router.route('/storage').get(saveStorageData);
