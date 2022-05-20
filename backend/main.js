@@ -1,11 +1,15 @@
-const express = require("express");
+import express from "express";
+import dotenv from "dotenv";
+import bodyParser from "body-parser";
+import router from "./routes/routes.js";
+
 const app = express();
-const port = 3000;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+// App configure
+dotenv.config({ path: "./config/config.env" });
+app.use(express.json());
+app.use(bodyParser.json());
+app.use("/", router);
+app.listen(process.env.PORT, () => {
+  console.log(`Example app listening on port ${process.env.PORT}`);
 });
