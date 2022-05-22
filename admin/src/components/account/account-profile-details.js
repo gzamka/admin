@@ -9,7 +9,6 @@ import {
   Grid,
   TextField,
 } from "@mui/material";
-import { flexbox } from "@mui/system";
 
 const states = [
   {
@@ -26,23 +25,17 @@ const states = [
   },
 ];
 
-export const AccountProfileDetails = (props) => {
-  const [values, setValues] = useState({
-    firstName: "",
-    lastName: "",
-  });
-
+export const AccountProfileDetails = ({setValues, values, fn}) => {
   const handleChange = (event) => {
     setValues({
       ...values,
       [event.target.name]: event.target.value,
     });
   };
-
   return (
-    <form autoComplete="off" noValidate {...props}>
+    <form autoComplete="off" noValidate >
       <Card>
-        <CardHeader title="New News " />
+        <CardHeader title="Add article" />
         <Divider />
         <CardContent>
           <Grid container spacing={3} style={styles.container}>
@@ -51,7 +44,7 @@ export const AccountProfileDetails = (props) => {
                 maxRows={1}
                 fullWidth
                 label="News title"
-                name="firstName"
+                name="title"
                 onChange={handleChange}
                 required
                 value={values.firstName}
@@ -64,7 +57,7 @@ export const AccountProfileDetails = (props) => {
                 minRows={15}
                 fullWidth
                 label="News Description"
-                name="lastName"
+                name="description"
                 onChange={handleChange}
                 required
                 value={values.lastName}
@@ -81,7 +74,7 @@ export const AccountProfileDetails = (props) => {
             p: 2,
           }}
         >
-          <Button color="primary" variant="contained">
+          <Button color="primary" variant="contained" onClick={fn}>
             Save
           </Button>
         </Box>
