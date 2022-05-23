@@ -1,5 +1,5 @@
 import { db } from '../firebase/firebase.js'
-import { addDoc, collection, onSnapshot, query, getDocs, orderBy, doc, setDoc, deleteDoc } from 'firebase/firestore';
+import { addDoc, collection, onSnapshot, query, getDoc, orderBy, doc, setDoc, deleteDoc } from 'firebase/firestore';
 import { storage } from '../firebase/firebase.js';
 import { ref, uploadString, getDownloadURL, deleteObject, getStorage } from "firebase/storage";
 import { useEffect, useState } from 'react'
@@ -60,8 +60,14 @@ export const DocUpdate = async ({ values, image, id }, col) => {
             arr.push(el)
         }
     }))
-    const docRef = await getDocs(collection(db, col))
-    //  arr.includes(image)
+    const docRef = await getDoc(doc(db, col, id))
+    docRef.data().img.forEach((doc) => {
+        if (arr.find(el => el.imgName === doc.imgName) === undefined) {
+            (async () => {
+                await imgDelete(doc)
+            })()
+        }
+    })
     await setDoc(doc(db, col, id), {
         ...values,
         img: arr,
