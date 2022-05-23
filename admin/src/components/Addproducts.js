@@ -3,15 +3,18 @@ import { AccountProfileDetails } from './account/account-profile-details';
 import { Box, Container, Grid, Typography, Button } from '@mui/material';
 import { Add_doc } from './Add_doc';
 import { useState } from 'react';
-export const AddProduct = ({ setaddproduct, num }) => {
-    const [image, setimage] = useState([])
+import {DocUpdate} from './Add_doc'
+export const AddProduct = ({ setaddproduct, num, titlevalue, descriptionval, images,bool ,id}) => {
+    const [image, setimage] = useState(bool ? images : [])
     const [values, setValues] = useState({
-        title: "",
-        description: "",
+        title: bool? titlevalue: "",
+        description: bool ? descriptionval : "",
     });
+    // console.log(image);
     const fn = () => {
-        Add_doc({ values, image })
+        Add_doc({ values, image }, "products")
         setimage('')
+        setaddproduct(false)
         setValues({
             title: "",
             description: "",
@@ -20,9 +23,12 @@ export const AddProduct = ({ setaddproduct, num }) => {
     const click = () => {
         setaddproduct(false)
     }
+    const update=()=>{
+        DocUpdate({values, image,id}, 'products')
+    }
     return (
         <>
-            <Container maxWidth="lg">
+            <Container maxWidth="lg" sx={{ width: "100vw" }}>
                 <Box
                     sx={{
                         alignItems: 'center',
@@ -60,7 +66,7 @@ export const AddProduct = ({ setaddproduct, num }) => {
                         md={6}
                         xs={12}
                     >
-                        <AccountProfile image={image} setimage={setimage} />
+                        <AccountProfile image={image} setimage={setimage} bool={bool} />
                     </Grid>
                     <Grid
                         item
@@ -68,7 +74,7 @@ export const AddProduct = ({ setaddproduct, num }) => {
                         md={6}
                         xs={12}
                     >
-                        <AccountProfileDetails setValues={setValues} values={values} fn={fn} />
+                        <AccountProfileDetails setValues={setValues} values={values} fn={fn} bool={bool} update={update}/>
                     </Grid>
                 </Grid>
             </Container>

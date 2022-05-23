@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Box,
   Button,
@@ -9,23 +8,8 @@ import {
   Grid,
   TextField,
 } from "@mui/material";
-
-const states = [
-  {
-    value: "alabama",
-    label: "Alabama",
-  },
-  {
-    value: "new-york",
-    label: "New York",
-  },
-  {
-    value: "san-francisco",
-    label: "San Francisco",
-  },
-];
-
-export const AccountProfileDetails = ({setValues, values, fn}) => {
+export const AccountProfileDetails = ({setValues, values, fn,bool,update}) => {
+  // console.log(bool);
   const handleChange = (event) => {
     setValues({
       ...values,
@@ -74,9 +58,13 @@ export const AccountProfileDetails = ({setValues, values, fn}) => {
             p: 2,
           }}
         >
+          {!bool ? 
           <Button color="primary" variant="contained" onClick={fn}>
             Save
-          </Button>
+          </Button> :
+          <Button color="primary" variant="contained" onClick={update}>
+            Save Changes
+          </Button>}
         </Box>
       </Card>
     </form>

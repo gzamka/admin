@@ -9,14 +9,12 @@ import {
 import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import * as React from 'react';
-import ImageIcon from '@mui/icons-material/Image';
-import ClearIcon from '@mui/icons-material/Clear';
 import { ImageEdit } from "../imageEdit";
 
 const user = {
   avatar: "",
 };
-export const AccountProfile = ({ image, setimage }) => {
+export const AccountProfile = ({ image, setimage,bool }) => {
   const imgbtn = (e) => {
     e.preventDefault()
     const m = e.target.files
@@ -32,7 +30,6 @@ export const AccountProfile = ({ image, setimage }) => {
   const Input = styled('input')({
     display: 'none',
   });
-  // console.log(image);
   return (
     <>
       <Card >
@@ -41,17 +38,18 @@ export const AccountProfile = ({ image, setimage }) => {
             sx={{
               borderRadius: "12px",
               width: "98%",
-              height: "300px",
+              height: "180px",
               border: "1px dashed black",
               display: "flex",
-              overflowX: "scroll"
+              overflowX: "scroll",
+              alignItems: "center"
             }}
           >
             {image[0] &&
               <>
                 {image.map((el, i) => {
                   return <Box key={i}>
-                    <ImageEdit img={el.base64} el={el} setimage={setimage} image={image} />
+                    <ImageEdit el={el} setimage={setimage} image={image} bool={bool} />
                   </Box>
                 })}
               </>
