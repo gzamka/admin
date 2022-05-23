@@ -47,7 +47,7 @@ export const AccountProfileDetails = ({setValues, values, fn}) => {
                 name="title"
                 onChange={handleChange}
                 required
-                value={values.firstName}
+                value={values.title}
                 variant="outlined"
               />
             </Grid>
@@ -60,7 +60,7 @@ export const AccountProfileDetails = ({setValues, values, fn}) => {
                 name="description"
                 onChange={handleChange}
                 required
-                value={values.lastName}
+                value={values.description}
                 variant="outlined"
               />
             </Box>

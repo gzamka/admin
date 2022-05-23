@@ -9,6 +9,10 @@ import {
 import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import * as React from 'react';
+import ImageIcon from '@mui/icons-material/Image';
+import ClearIcon from '@mui/icons-material/Clear';
+import { ImageEdit } from "../imageEdit";
+
 const user = {
   avatar: "",
 };
@@ -33,24 +37,26 @@ export const AccountProfile = ({ image, setimage }) => {
     <>
       <Card >
         <CardContent>
-          {image[0] &&
-          <>
-          <img src={image[0].base64} style={{
-            alignItems: "center",
-            display: "flex",
-            flexDirection: "column",
-            height: "250px",
-            backgroundColor: "Grey"
-          }} />
-          {image.map((el, i) => {
-            return <img src={el.base64} key={i} style={{
-              height: "80px",
-              width: "80px",
-              backgroundColor: "Grey"
-            }} />
-          })}
-          </>
-          }
+          <Box
+            sx={{
+              borderRadius: "12px",
+              width: "98%",
+              height: "300px",
+              border: "1px dashed black",
+              display: "flex",
+              overflowX: "scroll"
+            }}
+          >
+            {image[0] &&
+              <>
+                {image.map((el, i) => {
+                  return <Box key={i}>
+                    <ImageEdit img={el.base64} el={el} setimage={setimage} image={image} />
+                  </Box>
+                })}
+              </>
+            }
+          </Box>
         </CardContent>
         <Divider />
         <CardActions>

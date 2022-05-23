@@ -12,6 +12,10 @@ export const AddProduct = ({ setaddproduct, num }) => {
     const fn = () => {
         Add_doc({ values, image })
         setimage('')
+        setValues({
+            title: "",
+            description: "",
+        })
     }
     const click = () => {
         setaddproduct(false)

@@ -2,7 +2,7 @@ import { db } from '../firebase/firebase.js'
 import { addDoc, collection } from 'firebase/firestore';
 import { storage } from '../firebase/firebase.js';
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
-export const Add_doc = async ({ values, image }) => {
+export const Add_doc = async ({ values, image}) => {
     if (image[0] !== undefined) {
         let arr = []
         await Promise.all(
