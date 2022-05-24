@@ -8,6 +8,7 @@ import { DeleteProduct } from '../Add_doc';
 export const ProductCard = ({ product, ...rest }) => {
   const [bool, setbool] = useState(false)
   var timestamp = product.date
+  console.log(product);
   let currentTime = Date.now()
   var date = new Date(currentTime - timestamp);
   let edit = () => {
@@ -19,14 +20,15 @@ export const ProductCard = ({ product, ...rest }) => {
   if (bool) {
     return <AddProduct titlevalue={product.title} descriptionval={product.description} images={product.img} bool={bool} id={product.id} />
   }
+
   return (
     <>
       <Card
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          height: '100%',
-          width: '75vw'
+          height: '400px',
+          width: '90vw'
         }}
         {...rest}
       >
@@ -45,8 +47,8 @@ export const ProductCard = ({ product, ...rest }) => {
                   src={product.img[0].imgUrl}
                   variant="square"
                   sx={{
-                    width: '300px',
-                    height: '300px'
+                    width: '150px',
+                    height: '150px'
                   }}
                 />
               </Box>
@@ -56,7 +58,7 @@ export const ProductCard = ({ product, ...rest }) => {
 
                 }}
               >
-                {product.img.map((el, i) => {
+                {product.img.slice(1).map((el, i) => {
                   return <Box
                     sx={{
                       display: 'flex',
@@ -71,8 +73,8 @@ export const ProductCard = ({ product, ...rest }) => {
                       src={el.imgUrl}
                       variant="square"
                       sx={{
-                        width: '100px',
-                        height: '100px'
+                        width: '50px',
+                        height: '50px'
                       }}
                     />
                   </Box>
@@ -84,7 +86,7 @@ export const ProductCard = ({ product, ...rest }) => {
                 align="center"
                 color="textPrimary"
                 gutterBottom
-                variant="h5"
+                variant="h6"
               >
                 Title:
               </Typography>
@@ -92,7 +94,7 @@ export const ProductCard = ({ product, ...rest }) => {
                 align="center"
                 color="textPrimary"
                 gutterBottom
-                variant="h5"
+                variant="h6"
               >
                 {product.title}
               </Typography>
@@ -100,14 +102,14 @@ export const ProductCard = ({ product, ...rest }) => {
                 align="center"
                 color="textPrimary"
                 gutterBottom
-                variant="h5"
+                variant="h6"
               >
                 Description:
               </Typography>
               <Typography
                 align="center"
                 color="textPrimary"
-                variant="h5"
+                variant="h6"
               >
                 {product.description}
               </Typography>

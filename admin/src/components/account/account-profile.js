@@ -30,6 +30,7 @@ export const AccountProfile = ({ image, setimage,bool }) => {
   const Input = styled('input')({
     display: 'none',
   });
+  console.log(image);
   return (
     <>
       <Card >

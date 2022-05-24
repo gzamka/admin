@@ -10,7 +10,6 @@ export const AddProduct = ({ setaddproduct, num, titlevalue, descriptionval, ima
         title: bool? titlevalue: "",
         description: bool ? descriptionval : "",
     });
-    // console.log(image);
     const fn = () => {
         Add_doc({ values, image }, "products")
         setimage('')
@@ -29,6 +28,7 @@ export const AddProduct = ({ setaddproduct, num, titlevalue, descriptionval, ima
     return (
         <>
             <Container maxWidth="lg" sx={{ width: "100vw" }}>
+                add
                 <Box
                     sx={{
                         alignItems: 'center',

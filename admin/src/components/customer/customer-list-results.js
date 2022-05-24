@@ -2,6 +2,7 @@ import { useState } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
+import { ProductCard } from '../product/product-card'
 import {
   Avatar,
   Box,
@@ -17,11 +18,13 @@ import {
 } from '@mui/material';
 import { getInitials } from '../../utils/get-initials';
 
-export const CustomerListResults = ({ customers, ...rest }) => {
+export const CustomerListResults = ({ customers }) => {
+  console.log(customers);
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
-
+  const [file, setfile] = useState([])
+  const [boolean, setbool] = useState(false)
   const handleSelectAll = (event) => {
     let newSelectedCustomerIds;
 
@@ -61,9 +64,21 @@ export const CustomerListResults = ({ customers, ...rest }) => {
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };
+  const fn = (id) => {
+    // console.log(id);
+    const a = customers.filter((el) => {
+      return el.id === id
+    })
+    setfile(a)
+    setbool(true)
 
+  }
+  if (boolean) {
+    return <ProductCard product={file} boolean={boolean} />
+  }
+  console.log(selectedCustomerIds);
   return (
-    <Card {...rest}>
+    <Card>
       <PerfectScrollbar>
         <Box sx={{ minWidth: 1050 }}>
           <Table>
@@ -81,28 +96,26 @@ export const CustomerListResults = ({ customers, ...rest }) => {
                   />
                 </TableCell>
                 <TableCell>
-                  Name
+                  Image
                 </TableCell>
                 <TableCell>
-                  Email
+                  Title
                 </TableCell>
                 <TableCell>
-                  Location
+                  Description
                 </TableCell>
                 <TableCell>
-                  Phone
-                </TableCell>
-                <TableCell>
-                  Registration date
+                  Created date
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {customers.slice(0, limit).map((customer) => (
+              {customers[0] && customers.slice(0, limit).map((customer) => (
                 <TableRow
                   hover
                   key={customer.id}
                   selected={selectedCustomerIds.indexOf(customer.id) !== -1}
+                  // onClick={() => fn(customer.id)}
                 >
                   <TableCell padding="checkbox">
                     <Checkbox
@@ -119,30 +132,18 @@ export const CustomerListResults = ({ customers, ...rest }) => {
                       }}
                     >
                       <Avatar
-                        src={customer.avatarUrl}
+                        src={customer.img[0].imgUrl}
                         sx={{ mr: 2 }}
                       >
                         {getInitials(customer.name)}
                       </Avatar>
-                      <Typography
-                        color="textPrimary"
-                        variant="body1"
-                      >
-                        {customer.name}
-                      </Typography>
                     </Box>
                   </TableCell>
                   <TableCell>
-                    {customer.email}
+                    {customer.title}
                   </TableCell>
                   <TableCell>
-                    {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`}
-                  </TableCell>
-                  <TableCell>
-                    {customer.phone}
-                  </TableCell>
-                  <TableCell>
-                    {format(customer.createdAt, 'dd/MM/yyyy')}
+                    {customer.description}
                   </TableCell>
                 </TableRow>
               ))}

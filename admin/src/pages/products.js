@@ -4,8 +4,12 @@ import { ProductListToolbar } from '../components/product/product-list-toolbar';
 import { ProductCard } from '../components/product/product-card';
 import { DashboardLayout } from '../components/dashboard-layout';
 import { useGetItems } from 'src/components/Add_doc';
+import { CustomerListResults } from '../components/customer/customer-list-results';
+import { CustomerListToolbar } from '../components/customer/customer-list-toolbar';
+import { customers } from '../__mocks__/customers';
 const Products = () => {
   const { docs } = useGetItems('products')
+  console.log(docs, ' -- - hshs');
   return (
     <>
       <Head>
@@ -21,42 +25,14 @@ const Products = () => {
         }}
       >
         <Container maxWidth={false}>
-          <ProductListToolbar />
-          <Box sx={{ pt: 3 }}>
-            <Grid
-              container
-              spacing={3}
-            >
+          <ProductListToolbar>
+            <Box sx={{ pt: 3 }}>
               {docs &&
-                <>
-                  {docs.map((product,i) => (
-                    <Grid
-                      item
-                      key={i}
-                      lg={4}
-                      md={6}
-                      xs={12}
-                    >
-                      <ProductCard product={product} />
-                    </Grid>
-                  ))}
-                </>
+                docs.map((product, i) => <ProductCard key={i} product={product} />)
               }
-            </Grid>
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              pt: 3
-            }}
-          >
-            <Pagination
-              color="primary"
-              count={3}
-              size="small"
-            />
-          </Box>
+            </Box>
+          </ProductListToolbar>
+
         </Container>
       </Box>
     </>)
