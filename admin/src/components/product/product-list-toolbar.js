@@ -13,18 +13,13 @@ import { Search as SearchIcon } from '../../icons/search';
 import { useState } from 'react';
 export const ProductListToolbar = ({ children }) => {
   const [addproduct, setaddproduct] = useState(false)
-  const productfn = () => {
+  const Addproduct = () => {
     setaddproduct(true)
   }
-  console.log(addproduct);
-  console.log(children);
 
-  if (addproduct) return <AddProduct setaddproduct={setaddproduct} num={1} />
+  if (addproduct) return <AddProduct setaddproduct={setaddproduct} addproduct={addproduct} num={1} />
   return (
     <Box >
-
-      !add
-
       <Box
         sx={{
           alignItems: 'center',
@@ -44,7 +39,7 @@ export const ProductListToolbar = ({ children }) => {
           <Button
             color="primary"
             variant="contained"
-            onClick={productfn}
+            onClick={Addproduct}
           >
             Add products
           </Button>

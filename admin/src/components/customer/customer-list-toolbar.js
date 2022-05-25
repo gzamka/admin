@@ -8,6 +8,7 @@ import {
   SvgIcon, Typography
 } from '@mui/material';
 import { Search as SearchIcon } from '../../icons/search';
+import {AddCustomersDiolog} from './addCustomersDialog'
 export const CustomerListToolbar = (props) => (
   <Box {...props}>
     <Box
@@ -26,13 +27,7 @@ export const CustomerListToolbar = (props) => (
         Customers
       </Typography>
       <Box sx={{ m: 1 }}>
-
-        <Button
-          color="primary"
-          variant="contained"
-        >
-          Add Customers
-        </Button>
+        <AddCustomersDiolog/>
       </Box>
     </Box>
     <Box sx={{ mt: 3 }}>

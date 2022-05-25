@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
-import { format } from 'date-fns';
-import { ProductCard } from '../product/product-card'
 import {
   Avatar,
   Box,
@@ -14,33 +12,30 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  Typography
 } from '@mui/material';
 import { getInitials } from '../../utils/get-initials';
-
+import { AddProduct } from '../Addproducts';
 export const CustomerListResults = ({ customers }) => {
-  console.log(customers);
+  // console.log(customers);
+  if (!customers[0]) return []
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
   const [file, setfile] = useState([])
-  const [boolean, setbool] = useState(false)
+  const [news, setNews] = useState(false)
   const handleSelectAll = (event) => {
     let newSelectedCustomerIds;
-
     if (event.target.checked) {
       newSelectedCustomerIds = customers.map((customer) => customer.id);
     } else {
       newSelectedCustomerIds = [];
     }
-
     setSelectedCustomerIds(newSelectedCustomerIds);
   };
 
   const handleSelectOne = (event, id) => {
     const selectedIndex = selectedCustomerIds.indexOf(id);
     let newSelectedCustomerIds = [];
-
     if (selectedIndex === -1) {
       newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds, id);
     } else if (selectedIndex === 0) {
@@ -57,26 +52,15 @@ export const CustomerListResults = ({ customers }) => {
     setSelectedCustomerIds(newSelectedCustomerIds);
   };
 
-  const handleLimitChange = (event) => {
-    setLimit(event.target.value);
-  };
+  const handleLimitChange = (event) => setLimit(event.target.value);
+  const handlePageChange = (event, newPage) => setPage(newPage);
 
-  const handlePageChange = (event, newPage) => {
-    setPage(newPage);
-  };
   const fn = (id) => {
-    // console.log(id);
-    const a = customers.filter((el) => {
-      return el.id === id
-    })
-    setfile(a)
-    setbool(true)
-
+    const filtered = customers.filter((el) => el.id === id)
+    setfile(filtered[0])
+    setNews(true)
   }
-  if (boolean) {
-    return <ProductCard product={file} boolean={boolean} />
-  }
-  console.log(selectedCustomerIds);
+  if (news) return <AddProduct product={file} news={news} setNews={setNews} num={1} />
   return (
     <Card>
       <PerfectScrollbar>
@@ -101,11 +85,11 @@ export const CustomerListResults = ({ customers }) => {
                 <TableCell>
                   Title
                 </TableCell>
-                <TableCell>
+                <TableCell sx={{ width: '70%' }}>
                   Description
                 </TableCell>
                 <TableCell>
-                  Created date
+                  Published date
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -115,7 +99,6 @@ export const CustomerListResults = ({ customers }) => {
                   hover
                   key={customer.id}
                   selected={selectedCustomerIds.indexOf(customer.id) !== -1}
-                  // onClick={() => fn(customer.id)}
                 >
                   <TableCell padding="checkbox">
                     <Checkbox
@@ -133,7 +116,13 @@ export const CustomerListResults = ({ customers }) => {
                     >
                       <Avatar
                         src={customer.img[0].imgUrl}
-                        sx={{ mr: 2 }}
+                        onClick={() => fn(customer.id)}
+                        sx={{
+                          mr: 2,
+                          width: '100px',
+                          borderRadius: '0',
+                          height: '100px'
+                        }}
                       >
                         {getInitials(customer.name)}
                       </Avatar>
@@ -142,8 +131,14 @@ export const CustomerListResults = ({ customers }) => {
                   <TableCell>
                     {customer.title}
                   </TableCell>
-                  <TableCell>
+                  <TableCell onClick={() => fn(customer.id)}>
                     {customer.description}
+                  </TableCell>
+                  <TableCell>
+                    {new Date(customer.date).getDate() +
+                      "/" + (new Date(customer.date).getMonth() + 1) +
+                      "/" + new Date(customer.date).getFullYear() +
+                      " " + new Date(customer.date).getHours() + "H"}
                   </TableCell>
                 </TableRow>
               ))}

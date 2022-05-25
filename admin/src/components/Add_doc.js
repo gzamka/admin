@@ -12,12 +12,11 @@ const imgUploader = async (el) => {
     return { imgName: el.imgName, imgUrl: url }
 }
 const imgDelete = async (el) => {
-    // console.log(el);
     const storage = getStorage();
     const desertRef = ref(storage, el.imgName);
     await deleteObject(desertRef)
 }
-export const Add_doc = async ({ values, image }, col) => {
+export const Add_doc = async ({ values, image = [] }, col) => {
     if (image[0] !== undefined) {
         let arr = []
         await Promise.all(
@@ -26,10 +25,14 @@ export const Add_doc = async ({ values, image }, col) => {
                 arr.push(img)
             }))
         await addDoc(collection(db, col), {
+            ...values,
             date: Date.now(),
-            title: values.title,
-            description: values.description,
             img: arr,
+        })
+    } else {
+        await addDoc(collection(db, col), {
+            email: values,
+            date: Date.now()
         })
     }
 }

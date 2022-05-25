@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Avatar, Box } from "@mui/material";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 export const ImageEdit = ({ el, setimage, image, bool }) => {
     const fn = () => {
@@ -7,25 +7,25 @@ export const ImageEdit = ({ el, setimage, image, bool }) => {
         })
         setimage(a)
     }
-    return (<>
+    return (<Box sx={{ width: '100%', position: 'relative' }}>
         <Box
+            alt="#"
+            variant="square"
             sx={{
-                width: "150px",
-                position: "relative",
-                height: "150px",
-                borderRadius: "12px",
+                width: '90%',
+                height: '150px',
                 backgroundImage: `url(${el.base64 || el.imgUrl})`,
+                borderRadius: "10px",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                marginLeft: "5px"
-
+                margin: "0 auto",
             }}
-        >
-            <HighlightOffIcon onClick={fn} sx={{
-                position: "absolute",
-                right: "0"
-            }} />
-        </Box>
-    </>)
+        ></Box>
+        {<HighlightOffIcon onClick={fn} sx={{
+            position: "absolute",
+            top: "-7px",
+            right: "5px",
+        }} />}
+    </Box>)
 
 }

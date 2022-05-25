@@ -5,93 +5,64 @@ import Button from '@mui/material/Button';
 import { AddProduct } from '../../components/Addproducts'
 import { useState } from 'react';
 import { DeleteProduct } from '../Add_doc';
-export const ProductCard = ({ product, ...rest }) => {
+export const ProductCard = ({ product}) => {
   const [bool, setbool] = useState(false)
   var timestamp = product.date
-  console.log(product);
   let currentTime = Date.now()
   var date = new Date(currentTime - timestamp);
   let edit = () => {
-    setbool(!bool)
+    setbool(true)
   }
   let deleteProduct = () => {
     DeleteProduct(product, 'products')
   }
-  if (bool) {
-    return <AddProduct titlevalue={product.title} descriptionval={product.description} images={product.img} bool={bool} id={product.id} />
-  }
-
+  let arr = ['1', '2', "3", "4"]
+  arr.unshift(product.img)
+  const a = arr.flat()
+  product.img.forEach((el) => {
+    a.pop()
+  })
+  if (bool) return <AddProduct product={product} bool={bool} setbool={setbool} num={1} />
   return (
     <>
       <Card
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          height: '400px',
-          width: '90vw'
+          marginTop: '10px'
         }}
-        {...rest}
       >
-        <CardContent>
-          <Box sx={{ display: "flex" }}>
+        <CardContent sx={{ height: "250px" }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Box sx={{ display: "flex", flexDirection: "column", }}>
               <Box
                 sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  pb: 3,
+                  display: "grid",
+                  gridTemplateColumns: "auto auto",
+                  rowGap: '10px',
+                  columnGap: '10px'
                 }}
               >
-                <Avatar
-                  alt="Product"
-                  src={product.img[0].imgUrl}
-                  variant="square"
-                  sx={{
-                    width: '150px',
-                    height: '150px'
-                  }}
-                />
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-
-                }}
-              >
-                {product.img.slice(1).map((el, i) => {
+                {a.map((el, i) => {
                   return <Box
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      marginLeft: "10px",
-                      pb: 3,
-                    }}
                     key={i}
                   >
                     <Avatar
-                      alt="Product"
+                      alt="#"
                       src={el.imgUrl}
                       variant="square"
                       sx={{
-                        width: '50px',
-                        height: '50px'
+                        width: '95px',
+                        height: '95px',
+                        borderRadius: "10px"
                       }}
                     />
                   </Box>
                 })}
               </Box>
             </Box>
-            <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Box sx={{ display: "flex", flexDirection: "column", width: "70%", height: '200px', overflowY: 'scroll' }}>
               <Typography
-                align="center"
-                color="textPrimary"
-                gutterBottom
-                variant="h6"
-              >
-                Title:
-              </Typography>
-              <Typography
-                align="center"
                 color="textPrimary"
                 gutterBottom
                 variant="h6"
@@ -99,17 +70,8 @@ export const ProductCard = ({ product, ...rest }) => {
                 {product.title}
               </Typography>
               <Typography
-                align="center"
                 color="textPrimary"
-                gutterBottom
-                variant="h6"
-              >
-                Description:
-              </Typography>
-              <Typography
-                align="center"
-                color="textPrimary"
-                variant="h6"
+                variant="h7"
               >
                 {product.description}
               </Typography>
@@ -118,7 +80,7 @@ export const ProductCard = ({ product, ...rest }) => {
         </CardContent>
         <Box sx={{ flexGrow: 1 }} />
         <Divider />
-        <Box sx={{ p: 2 }}>
+        <Box sx={{ p: 2, height: '60px', paddingTop: '12px' }}>
           <Grid
             container
             spacing={2}
