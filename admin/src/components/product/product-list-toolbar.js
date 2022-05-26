@@ -11,13 +11,10 @@ import {
 import { AddProduct } from '../Addproducts';
 import { Search as SearchIcon } from '../../icons/search';
 import { useState } from 'react';
-export const ProductListToolbar = ({ children }) => {
+export const ProductListToolbar = ({ children, setfilter, col }) => {
   const [addproduct, setaddproduct] = useState(false)
-  const Addproduct = () => {
-    setaddproduct(true)
-  }
-
-  if (addproduct) return <AddProduct setaddproduct={setaddproduct} addproduct={addproduct} num={1} />
+  const Addproduct = () => setaddproduct(true)
+  if (addproduct) return <AddProduct setaddproduct={setaddproduct} col={col} addproduct={addproduct} num={1} />
   return (
     <Box >
       <Box
@@ -33,7 +30,7 @@ export const ProductListToolbar = ({ children }) => {
           sx={{ m: 1 }}
           variant="h4"
         >
-          Products
+          {col === "products" ? "Products" : "News"}
         </Typography>
         <Box sx={{ m: 1 }}>
           <Button
@@ -41,7 +38,7 @@ export const ProductListToolbar = ({ children }) => {
             variant="contained"
             onClick={Addproduct}
           >
-            Add products
+            {col === "products" ? "Add products" : "Add article"}
           </Button>
         </Box>
       </Box>
@@ -51,6 +48,7 @@ export const ProductListToolbar = ({ children }) => {
             <Box sx={{ maxWidth: 500 }}>
               <TextField
                 fullWidth
+                onChange={(e) => setfilter(e.target.value)}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">

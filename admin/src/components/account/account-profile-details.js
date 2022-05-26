@@ -8,8 +8,7 @@ import {
   Grid,
   TextField,
 } from "@mui/material";
-export const AccountProfileDetails = ({setValues, values, fn,bool,update}) => {
-  // console.log(bool);
+export const AccountProfileDetails = ({setValues, values, fn,bool,update,col}) => {
   const handleChange = (event) => {
     setValues({
       ...values,
@@ -19,7 +18,7 @@ export const AccountProfileDetails = ({setValues, values, fn,bool,update}) => {
   return (
     <form autoComplete="off" noValidate >
       <Card>
-        <CardHeader title="Add article" />
+        <CardHeader title={col==='news' ? "Add news" : "Add product"} />
         <Divider />
         <CardContent>
           <Grid container spacing={3} style={styles.container}>

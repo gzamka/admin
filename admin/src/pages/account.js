@@ -1,18 +1,19 @@
 import Head from 'next/head';
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { Box,Container} from '@mui/material';
+import {ProductListToolbar} from '../components/product/product-list-toolbar'
 import { DashboardLayout } from '../components/dashboard-layout';
-import { AddProduct } from 'src/components/Addproducts';
-import { CustomerListResults } from '../components/customer/customer-list-results';
 import { useGetItems } from 'src/components/Add_doc';
+import { ProductCard } from '../components/product/product-card'
 import { useState } from 'react';
 const Account = () => {
-  const { docs } = useGetItems('products')
-  const [bool, setboolean] = useState(false)
+  const col = 'news'
+  const { docs } = useGetItems(col)
+  const [filter, setfilter] = useState('')
   return (
-    <>
-      <Head>
+     <>
+          <Head>
         <title>
-          Account | Material Kit
+          Products | Material Kit
         </title>
       </Head>
       <Box
@@ -22,10 +23,17 @@ const Account = () => {
           py: 8
         }}
       >
-        {!bool && <AddProduct />}
-      </Box>
-      <Box sx={{ mt: 3 }}>
-        <CustomerListResults customers={docs} setboolean={setboolean} bool={bool} />
+        <Container maxWidth={false}>
+          <ProductListToolbar col={col} setfilter={setfilter} >
+            {docs && docs.filter((el) => {
+              return  el.title ? el.title.toLowerCase().includes(filter) : el
+            }).map((el, i) => {
+              return <Box key={i} sx={{ pt: 3 }}>
+                <ProductCard col={col} product={el} />
+              </Box>
+            })}
+          </ProductListToolbar>
+        </Container>
       </Box>
     </>
   )

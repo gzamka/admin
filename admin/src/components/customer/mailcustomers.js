@@ -5,17 +5,20 @@ export const Mailcustomers = () => {
     const { docs } = useGetItems('customers')
     const columns = [
         { field: 'id', headerName: 'ID', width: 150 },
-        { field: 'email', headerName: 'Mail', width: 200 ,valueGetter: (params) =>
-        `${params.row.email || ''}`,
-}
-]
+        {
+            field: 'email', headerName: 'Mail', width: 200, valueGetter: (params) =>
+                `${params.row.email || ''}`,
+        }
+    ]
     return (
-        <DataGrid
-            rows={docs}
-            columns={columns}
-            pageSize={5}
-            rowsPerPageOptions={[5]}
-            checkboxSelection
-        />
+        <>{docs.length !== 0 &&
+            <DataGrid
+                rows={docs}
+                columns={columns}
+                pageSize={5}
+                rowsPerPageOptions={[5]}
+                checkboxSelection
+            />}
+        </>
     )
 }

@@ -1,34 +1,45 @@
 import { AccountProfile } from './account/account-profile';
 import { AccountProfileDetails } from './account/account-profile-details';
-import { Box, Container, Grid, Typography, Button } from '@mui/material';
+import { Box, Container, Grid, Typography, Button, Alert } from '@mui/material';
 import { Add_doc } from './Add_doc';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 import { useState } from 'react';
 import { DocUpdate } from './Add_doc'
-export const AddProduct = ({ setaddproduct, num, product, setbool, bool, addproduct, news, setNews }) => {
-    if (!bool) bool = news
-    const id = product && product.id
+export const AddProduct = ({ setaddproduct, num, product, setbool, bool, col, addproduct }) => {
+    const id = bool && product.id
     const [image, setimage] = useState(bool ? product.img : [])
     const [values, setValues] = useState({
         title: bool ? product.title : "",
         description: bool ? product.description : "",
     });
-    const fn = () => {
-        Add_doc({ values, image }, "products")
+    const [open, setOpen] = useState(false);
+    const fn = async () => {
+        if (image.length === 0) alert('You must add image to post') /// if image didn't uploaded 
+        setOpen(true)
         setimage('')
-        setaddproduct(false)
-        setValues({
-            title: "",
-            description: "",
-        })
-    }
-    const clear = () => {
-        if (news) return setNews(false)
+        setValues({ title: "", description: "" })
+        await Add_doc({ values, image }, col)
+        setOpen(false)
         if (bool) setbool(false)
         if (addproduct) setaddproduct(false)
     }
-    const update = () => DocUpdate({ values, image, id }, 'products')
+    const clear = () => {
+        if (bool) setbool(false) ///edit product bool
+        if (addproduct) setaddproduct(false)  ///add product 
+    }
+    const update = () => {
+        DocUpdate({ values, image, id }, col)
+        if (bool) setbool(false)
+    }
     return (
         <Container maxWidth="lg" sx={{ marginTop: "10px" }}>
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={open}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
             <Box
                 sx={{
                     alignItems: 'center',
@@ -74,7 +85,7 @@ export const AddProduct = ({ setaddproduct, num, product, setbool, bool, addprod
                     md={6}
                     xs={12}
                 >
-                    <AccountProfileDetails setValues={setValues} values={values} fn={fn} bool={bool} update={update} />
+                    <AccountProfileDetails setValues={setValues} values={values} fn={fn} bool={bool} update={update} col={col} />
                 </Grid>
             </Grid>
         </Container>

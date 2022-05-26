@@ -6,9 +6,10 @@ import { DashboardLayout } from '../components/dashboard-layout';
 import { useGetItems } from 'src/components/Add_doc';
 import { useState } from 'react';
 const Products = () => {
-  const { docs } = useGetItems('products')
-  const [addproduct, setaddproduct] = useState(false)
- return (
+  const col = "products"
+  const { docs } = useGetItems(col)
+  const [filter, setfilter] = useState('')
+  return (
     <>
       <Head>
         <title>
@@ -23,16 +24,19 @@ const Products = () => {
         }}
       >
         <Container maxWidth={false}>
-          <ProductListToolbar>
-            <Box sx={{ pt: 3 }}>
-              {docs &&
-                docs.map((product, i) => <ProductCard key={i}  product={product}/>)
-              }
-            </Box>
+          <ProductListToolbar col={col} setfilter={setfilter}>
+            {docs && docs.filter((el) => {
+              return  el.title ? el.title.toLowerCase().includes(filter) : el
+            }).map((el, i) => {
+              return <Box key={i} sx={{ pt: 3 }}>
+                <ProductCard col={col} product={el} />
+              </Box>
+            })}
           </ProductListToolbar>
         </Container>
       </Box>
-    </>)
+    </>
+  )
 };
 
 Products.getLayout = (page) => (

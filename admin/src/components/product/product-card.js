@@ -5,24 +5,23 @@ import Button from '@mui/material/Button';
 import { AddProduct } from '../../components/Addproducts'
 import { useState } from 'react';
 import { DeleteProduct } from '../Add_doc';
-export const ProductCard = ({ product}) => {
+export const ProductCard = ({ product, col }) => {
+  // console.log(product);
   const [bool, setbool] = useState(false)
   var timestamp = product.date
   let currentTime = Date.now()
   var date = new Date(currentTime - timestamp);
-  let edit = () => {
-    setbool(true)
-  }
+  let edit = () => setbool(true)
   let deleteProduct = () => {
-    DeleteProduct(product, 'products')
+    if (confirm('Are you sure?')) DeleteProduct([product], col)
   }
   let arr = ['1', '2', "3", "4"]
   arr.unshift(product.img)
   const a = arr.flat()
-  product.img.forEach((el) => {
-    a.pop()
-  })
-  if (bool) return <AddProduct product={product} bool={bool} setbool={setbool} num={1} />
+    product.img.forEach((el) => {
+      a.pop()
+    })
+  if (bool) return <AddProduct product={product} bool={bool} setbool={setbool} col={col} num={1} />
   return (
     <>
       <Card
@@ -49,7 +48,7 @@ export const ProductCard = ({ product}) => {
                   >
                     <Avatar
                       alt="#"
-                      src={el.imgUrl}
+                      src={product.img && el.imgUrl}
                       variant="square"
                       sx={{
                         width: '95px',

@@ -6,14 +6,10 @@ import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { createEmotionCache } from '../utils/create-emotion-cache';
 import { theme } from '../theme';
-
 const clientSideEmotionCache = createEmotionCache();
-
-const App = (props) => {
+export const App = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-
   const getLayout = Component.getLayout ?? ((page) => page);
-
   return (
     <CacheProvider value={emotionCache}>
       <Head>

@@ -2,14 +2,16 @@ import { db } from '../firebase/firebase.js'
 import { addDoc, collection, onSnapshot, query, getDoc, orderBy, doc, setDoc, deleteDoc } from 'firebase/firestore';
 import { storage } from '../firebase/firebase.js';
 import { ref, uploadString, getDownloadURL, deleteObject, getStorage } from "firebase/storage";
+import { v4 as uuidv4 } from 'uuid';
 import { useEffect, useState } from 'react'
 const imgUploader = async (el) => {
     const fixedbase64 = el.base64.split(/,(.+)/)[1]
+    const imgName = uuidv4() + el.imgName
     ///imgUpload on firebase 
-    const storageRef = ref(storage, el.imgName);
-    await uploadString(storageRef, fixedbase64, 'base64')
+    const storageRef = ref(storage, imgName);
+    await uploadString(storageRef, fixedbase64, 'base64', { contentType: "image/jpg" })
     const url = await getDownloadURL(storageRef)
-    return { imgName: el.imgName, imgUrl: url }
+    return { imgName: imgName, imgUrl: url }
 }
 const imgDelete = async (el) => {
     const storage = getStorage();
@@ -29,7 +31,8 @@ export const Add_doc = async ({ values, image = [] }, col) => {
             date: Date.now(),
             img: arr,
         })
-    } else {
+    }
+    else {
         await addDoc(collection(db, col), {
             email: values,
             date: Date.now()
@@ -78,9 +81,17 @@ export const DocUpdate = async ({ values, image, id }, col) => {
     })
 
 }
-export const DeleteProduct = async (product, col) => {
-    await deleteDoc(doc(db, col, product.id));
-    product.img.map(async (el) => {
-        await imgDelete(el)
-    })
+export const DeleteProduct = (product, col) => {
+    try {
+        product.map(async (el) => {
+            await deleteDoc(doc(db, col, el.id));
+            if (el.img) {
+                el.img.map(async (element) => {
+                    await imgDelete(element)
+                })
+            }
+        })
+    } catch (e) {
+        console.log(e);
+    }
 }

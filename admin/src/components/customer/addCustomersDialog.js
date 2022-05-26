@@ -12,6 +12,7 @@ export const AddCustomersDiolog = () => {
     const [values, setvalues] = useState('')
     const handleClickOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    console.log(values);
     const sub = () => {
         Add_doc({ values }, 'customers')
         setOpen(false);
