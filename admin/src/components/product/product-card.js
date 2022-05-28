@@ -9,8 +9,7 @@ export const ProductCard = ({ product, col }) => {
   // console.log(product);
   const [bool, setbool] = useState(false)
   var timestamp = product.date
-  let currentTime = Date.now()
-  var date = new Date(currentTime - timestamp);
+  var date = new Date(timestamp);
   let edit = () => setbool(true)
   let deleteProduct = () => {
     if (confirm('Are you sure?')) DeleteProduct([product], col)
@@ -18,9 +17,9 @@ export const ProductCard = ({ product, col }) => {
   let arr = ['1', '2', "3", "4"]
   arr.unshift(product.img)
   const a = arr.flat()
-    product.img.forEach((el) => {
-      a.pop()
-    })
+  product.img.forEach((el) => {
+    a.pop()
+  })
   if (bool) return <AddProduct product={product} bool={bool} setbool={setbool} col={col} num={1} />
   return (
     <>
@@ -99,7 +98,11 @@ export const ProductCard = ({ product, col }) => {
                 sx={{ pl: 1 }}
                 variant="body2"
               >
-                Updated {date.getMinutes()} min ago
+                {date.getDate() +
+                  "/" + (date.getMonth() + 1) +
+                  "/" + date.getFullYear() +
+                  " " + date.getHours() +
+                  ":" + date.getMinutes()}
               </Typography>
             </Grid>
             <Grid

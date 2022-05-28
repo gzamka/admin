@@ -5,6 +5,7 @@ import { DashboardLayout } from '../components/dashboard-layout';
 import { useGetItems } from 'src/components/Add_doc';
 import { ProductCard } from '../components/product/product-card'
 import { useState } from 'react';
+import { userAuth } from '../components/_userAuth';
 const Account = () => {
   const col = 'news'
   const { docs } = useGetItems(col)
@@ -38,11 +39,11 @@ const Account = () => {
     </>
   )
 };
-
-Account.getLayout = (page) => (
+const Accountauth=userAuth(Account)
+Accountauth.getLayout = (page) => (
   <DashboardLayout>
     {page}
   </DashboardLayout>
 );
 
-export default Account;
+export default Accountauth;

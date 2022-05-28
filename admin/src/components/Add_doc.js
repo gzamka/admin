@@ -53,7 +53,6 @@ export const useGetItems = (col) => {
             sub()
         })
     }, [])
-    // console.log(docs);
     return { docs }
 }
 export const DocUpdate = async ({ values, image, id }, col) => {

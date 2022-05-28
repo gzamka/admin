@@ -4,9 +4,8 @@ import { useGetItems } from '../Add_doc'
 export const Mailcustomers = () => {
     const { docs } = useGetItems('customers')
     const columns = [
-        { field: 'id', headerName: 'ID', width: 150 },
         {
-            field: 'email', headerName: 'Mail', width: 200, valueGetter: (params) =>
+            field: 'email', headerName: 'Mail', width: 400, valueGetter: (params) =>
                 `${params.row.email || ''}`,
         }
     ]

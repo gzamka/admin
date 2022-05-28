@@ -1,6 +1,6 @@
 import { AccountProfile } from './account/account-profile';
 import { AccountProfileDetails } from './account/account-profile-details';
-import { Box, Container, Grid, Typography, Button, Alert } from '@mui/material';
+import { Box, Container, Grid, Typography, Button } from '@mui/material';
 import { Add_doc } from './Add_doc';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -15,7 +15,8 @@ export const AddProduct = ({ setaddproduct, num, product, setbool, bool, col, ad
     });
     const [open, setOpen] = useState(false);
     const fn = async () => {
-        if (image.length === 0) alert('You must add image to post') /// if image didn't uploaded 
+        if (image.length === 0) return alert('You must add an image to post') /// if image didn't uploaded 
+        if (image.length > 4) return alert("You can upload only 4 images at a time")
         setOpen(true)
         setimage('')
         setValues({ title: "", description: "" })
@@ -28,9 +29,10 @@ export const AddProduct = ({ setaddproduct, num, product, setbool, bool, col, ad
         if (bool) setbool(false) ///edit product bool
         if (addproduct) setaddproduct(false)  ///add product 
     }
-    const update = () => {
-        DocUpdate({ values, image, id }, col)
-        if (bool) setbool(false)
+    const update = async () => {
+        if (image.length === 0) return alert("Your post doesn't have an image!")
+        await DocUpdate({ values, image, id }, col)
+        // if (bool) setbool(false)
     }
     return (
         <Container maxWidth="lg" sx={{ marginTop: "10px" }}>

@@ -45,7 +45,7 @@ export const AccountProfile = ({ image, setimage, bool }) => {
             {image[0] ? (
               image.map((el, i) => {
                 return (
-                  <Box key={i} sx={{ marginTop: "10px" }}>
+                  <Box key={i} sx={{ marginTop: "10px",display: 'flex', justifyContent:'center', alignItems: 'center' }}>
                     <ImageEdit
                       el={el}
                       setimage={setimage}

@@ -3,6 +3,7 @@ import { Box, Container } from '@mui/material';
 import { Mailcustomers } from '../components/customer/mailcustomers';
 import { CustomerListToolbar } from '../components/customer/customer-list-toolbar';
 import { DashboardLayout } from '../components/dashboard-layout';
+import { userAuth } from '../components/_userAuth';
 const Customers = () => {
   return (
     <>
@@ -20,19 +21,18 @@ const Customers = () => {
       >
         <Container maxWidth={false}>
           <CustomerListToolbar />
-          <Box sx={{ mt: 3,height: '400px' }}>
-            <Mailcustomers/>
+          <Box sx={{ mt: 3, height: '400px',width:'500px' }}>
+            <Mailcustomers />
           </Box>
         </Container>
       </Box>
     </>
   )
 };
-
-Customers.getLayout = (page) => (
+const customersauth = userAuth(Customers)
+customersauth.getLayout = (page) => (
   <DashboardLayout>
     {page}
   </DashboardLayout>
 );
-
-export default Customers;
+export default customersauth;

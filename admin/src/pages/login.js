@@ -1,13 +1,23 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Box, Button, Container, Grid, TextField, Typography } from '@mui/material';
-import { auth } from 'src/firebase/firebase';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from 'next/router';
+import { getAuth, sendPasswordResetEmail,signInWithEmailAndPassword } from "firebase/auth";
+
 const Login = () => {
-  const router = useRouter();
   const auth = getAuth();
+  const Updatepass = () => {
+    sendPasswordResetEmail(auth, "jjavkhlan123@gmail.com")
+      .then(() => {
+        Alert("Password reset mail sent! Check your email");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        alert(errorMessage)
+      });
+  }
+  const router = useRouter()
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -30,16 +40,11 @@ const Login = () => {
     onSubmit: () => {
       signInWithEmailAndPassword(auth, formik.values.email, formik.values.password)
         .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-          console.log(user);
-          // ...
-          router.push('/products');
+          router.push('/');
         })
         .catch((error) => {
-          const errorCode = error.code;
-          console.log(errorCode);
-          const errorMessage = error.message;
+          alert('Wrong password!')
+          window.location.reload()
         });
     }
   });
@@ -129,6 +134,7 @@ const Login = () => {
                 Sign In Now
               </Button>
             </Box>
+            <Button onClick={Updatepass}>Forgot password</Button>
           </form>
         </Container>
       </Box>

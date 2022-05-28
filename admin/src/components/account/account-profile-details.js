@@ -26,7 +26,7 @@ export const AccountProfileDetails = ({setValues, values, fn,bool,update,col}) =
               <TextField
                 maxRows={1}
                 fullWidth
-                label="News title"
+                label={col==='news' ? "News title" : "Product title"}
                 name="title"
                 onChange={handleChange}
                 required
@@ -39,7 +39,7 @@ export const AccountProfileDetails = ({setValues, values, fn,bool,update,col}) =
                 multiline
                 minRows={15}
                 fullWidth
-                label="News Description"
+                label={col==='news' ? "News Description" : "Product description"}
                 name="description"
                 onChange={handleChange}
                 required
@@ -78,6 +78,7 @@ const styles = {
   buttonstyle: {
     paddingTop: 24,
     paddingLeft: 24,
-    height: "400px",
+    height: "350px",
+    overflowY: "scroll"
   },
 };
