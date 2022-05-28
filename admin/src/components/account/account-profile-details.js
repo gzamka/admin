@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Box,
   Button,
@@ -9,23 +8,7 @@ import {
   Grid,
   TextField,
 } from "@mui/material";
-
-const states = [
-  {
-    value: "alabama",
-    label: "Alabama",
-  },
-  {
-    value: "new-york",
-    label: "New York",
-  },
-  {
-    value: "san-francisco",
-    label: "San Francisco",
-  },
-];
-
-export const AccountProfileDetails = ({setValues, values, fn}) => {
+export const AccountProfileDetails = ({setValues, values, fn,bool,update,col}) => {
   const handleChange = (event) => {
     setValues({
       ...values,
@@ -35,7 +18,7 @@ export const AccountProfileDetails = ({setValues, values, fn}) => {
   return (
     <form autoComplete="off" noValidate >
       <Card>
-        <CardHeader title="Add article" />
+        <CardHeader title={col==='news' ? "Add news" : "Add product"} />
         <Divider />
         <CardContent>
           <Grid container spacing={3} style={styles.container}>
@@ -43,11 +26,11 @@ export const AccountProfileDetails = ({setValues, values, fn}) => {
               <TextField
                 maxRows={1}
                 fullWidth
-                label="News title"
+                label={col==='news' ? "News title" : "Product title"}
                 name="title"
                 onChange={handleChange}
                 required
-                value={values.firstName}
+                value={values.title}
                 variant="outlined"
               />
             </Grid>
@@ -56,11 +39,11 @@ export const AccountProfileDetails = ({setValues, values, fn}) => {
                 multiline
                 minRows={15}
                 fullWidth
-                label="News Description"
+                label={col==='news' ? "News Description" : "Product description"}
                 name="description"
                 onChange={handleChange}
                 required
-                value={values.lastName}
+                value={values.description}
                 variant="outlined"
               />
             </Box>
@@ -74,9 +57,13 @@ export const AccountProfileDetails = ({setValues, values, fn}) => {
             p: 2,
           }}
         >
+          {!bool ? 
           <Button color="primary" variant="contained" onClick={fn}>
             Save
-          </Button>
+          </Button> :
+          <Button color="primary" variant="contained" onClick={update}>
+            Save Changes
+          </Button>}
         </Box>
       </Card>
     </form>
@@ -91,6 +78,7 @@ const styles = {
   buttonstyle: {
     paddingTop: 24,
     paddingLeft: 24,
-    height: "400px",
+    height: "350px",
+    overflowY: "scroll"
   },
 };

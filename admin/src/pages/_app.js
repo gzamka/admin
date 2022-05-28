@@ -6,14 +6,11 @@ import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { createEmotionCache } from '../utils/create-emotion-cache';
 import { theme } from '../theme';
-
+import { Auth } from '../components/Authprovider';
 const clientSideEmotionCache = createEmotionCache();
-
-const App = (props) => {
+export const App = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-
   const getLayout = Component.getLayout ?? ((page) => page);
-
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -28,7 +25,9 @@ const App = (props) => {
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          {getLayout(<Component {...pageProps} />)}
+          <Auth>
+            {getLayout(<Component {...pageProps} />)}
+          </Auth>
         </ThemeProvider>
       </LocalizationProvider>
     </CacheProvider>
