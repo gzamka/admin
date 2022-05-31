@@ -4,11 +4,16 @@ import { Loadingscreen } from './Loadingscreen'
 export const userAuth = (Component) => {
     return function isLoading(props) {
         const router = useRouter()
-        const { login } = useAuth()
-        if (!login) {
-            router.push('/login')
+        const { login, loading } = useAuth()
+
+        console.log(loading)
+        if (loading)
             return <Loadingscreen />
-        }
-        return <Component login={login} {...props} />
+
+        if (login) {
+            console.log(login);
+            return <Component login={login} {...props} />
+        } else
+            router.push('/login')
     }
 }
