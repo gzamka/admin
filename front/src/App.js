@@ -1,11 +1,15 @@
-import { Choose } from './components'
+import { Choose, Footer } from './components'
 
 export const App = () => {
   return (
-    <div style={{ display: "flex", flexDirection: 'row', justifyContent: 'space-around', width: "100%", }}>
-        <Choose/>
-        <Choose/>
-        <Choose/>
+    <div>
+
+      <div style={{ display: "flex", flexDirection: 'row', justifyContent: 'space-evenly', width: "80%", }}>
+          <Choose/>
+          <Choose/>
+          <Choose/>
+      </div>
+      <Footer/>
     </div>
   );
 }

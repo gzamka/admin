@@ -39,7 +39,7 @@
   padding: 85px 22px;
   transition: transform 300ms ease-in;
   transform: scaleX(0);
-  transform-origin: center;
+  transform-origin: right;
   border-radius: 5px;
 }
 
@@ -58,9 +58,50 @@
   color: white;
 }
 
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  width: 100%;
+  height: 20vh;
+  border: 1px solid black;
+}
 .footer-container .footer-logo {
-  width: 50px;
-  height: 50px;
+  margin-left: 1%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 35%;
+}
+.footer-container .inputWithIcon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 4px #357AF6 solid;
+  border-radius: 20px;
+  background-color: white;
+  width: 300px;
+  height: 35px;
+  bottom: 10px;
+}
+.footer-container .inputWithIcon .input {
+  width: 80%;
+  height: 72px;
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
+.footer-container .footer-inputbutton {
+  display: flex;
+}
+.footer-container .footer-fim-logo {
+  width: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-right: 5%;
 }
 
 /*# sourceMappingURL=output.css.map */
