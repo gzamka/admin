@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Card,
   CardContent,
   TextField,
@@ -8,9 +7,7 @@ import {
   SvgIcon, Typography
 } from '@mui/material';
 import { Search as SearchIcon } from '../../icons/search';
-import { Upload as UploadIcon } from '../../icons/upload';
-import { Download as DownloadIcon } from '../../icons/download';
-
+import {AddCustomersDiolog} from './addCustomersDialog'
 export const CustomerListToolbar = (props) => (
   <Box {...props}>
     <Box
@@ -29,13 +26,7 @@ export const CustomerListToolbar = (props) => (
         Customers
       </Typography>
       <Box sx={{ m: 1 }}>
-
-        <Button
-          color="primary"
-          variant="contained"
-        >
-          Add Customers
-        </Button>
+        <AddCustomersDiolog/>
       </Box>
     </Box>
     <Box sx={{ mt: 3 }}>
