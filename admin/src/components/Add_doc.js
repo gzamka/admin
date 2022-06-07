@@ -41,7 +41,7 @@ export const Add_doc = async ({ values, image = [] }, col) => {
 }
 export const useGetItems = (col) => {
     const [docs, setdocs] = useState([])
-    useEffect(async () => {
+    useEffect(() => {
         const queried = query(collection(db, col), orderBy("date", "desc"));
         const sub = onSnapshot(queried, (snapshot) => {
             setdocs('')

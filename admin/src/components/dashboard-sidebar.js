@@ -6,9 +6,9 @@ import { Box, Divider, Drawer, useMediaQuery } from '@mui/material';
 import { ShoppingBag as ShoppingBagIcon } from '../icons/shopping-bag';
 import { User as UserIcon } from '../icons/user';
 import { Users as UsersIcon } from '../icons/users';
-import { Logo } from './logo';
 import { NavItem } from './nav-item';
-
+import logo from "../icons/mass_tech.png"
+import Image from 'next/image'
 const items = [
   {
     href: '/customers',
@@ -61,16 +61,11 @@ export const DashboardSidebar = (props) => {
         <div>
           <Box sx={{ p: 3 }}>
             <NextLink
-              href="/products"
+              href="/"
               passHref
             >
               <a>
-                <Logo
-                  sx={{
-                    height: 42,
-                    width: 42
-                  }}
-                />
+                <Image src={logo} alt="#" width='150px' height='50px' />
               </a>
             </NextLink>
           </Box>
