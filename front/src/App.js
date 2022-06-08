@@ -13,13 +13,12 @@ import Footer from './components/Footer/Footer';
 function App() {
   const { data } = useCustomhook("products")
   const news = useCustomhook('news')
-  // console.log(data);
   return (
     <BrowserRouter>
       <GlobalStyle />
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home docs={data} />} />
         <Route path="/products" element={<Products docs={data} />} />
         <Route path="/products/:slug" element={<SpecificProduct docs={data} />} />
         <Route path="/news" element={<News docs={news.data} />} />

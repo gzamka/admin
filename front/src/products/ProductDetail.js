@@ -22,14 +22,12 @@ export const ProductDetail = ({ el, docs }) => {
                                 <button className='lbtn' onClick={leftbtn} />
                                 <Box sx={style.middle}>
                                     {el.img.map((element, i) => {
-                                        {
-                                            let a = i === counter ? <Box sx={i !== 0 ? style.containerimg : style.containerimg1} key={i}>
-                                                <img alt="#" src={element.imgUrl} style={style.image} />
-                                            </Box> :
-                                                <Box key={i} sx={{ marginLeft: '10px', width: "150.09px", height: '117.15px' }}>
-                                                    <img alt="#" src={element.imgUrl} style={style.image} /></Box>
-                                            return a
-                                        }
+                                        let a = i === counter ? <Box sx={i !== 0 ? style.containerimg : style.containerimg1} key={i}>
+                                            <img alt="#" src={element.imgUrl} style={style.image} />
+                                        </Box> :
+                                            <Box key={i} sx={{ marginLeft: '10px', width: "150.09px", height: '117.15px' }}>
+                                                <img alt="#" src={element.imgUrl} style={style.image} /></Box>
+                                        return a
                                     })}
                                 </Box>
                                 <button className='btn' onClick={rightbtn} />
@@ -97,7 +95,6 @@ const style = {
         alignItems: "center",
         margin: "0 auto",
         justifyContent: "center",
-        marginTop: "30px",
         width: "80vw",
         height: "500px",
         backgroundColor: "#f5f5f5",

@@ -9,7 +9,7 @@ export const useCustomhook = (col) => {
                 const docs = await getDocs(collection(db, col))
                 setdocs([])
                 docs.forEach((doc) => {
-                    setdocs((data) => [...data, { id: doc.id, ...doc.data() }])
+                    setdocs((data) => [...data, { id: doc.id, ...doc.data()}])
                 })
             }
         })()

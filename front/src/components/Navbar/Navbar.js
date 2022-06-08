@@ -14,11 +14,18 @@ import {
 } from './NavbarStyles.js';
 import { useNavigate } from 'react-router-dom';
 import { data } from '../../data/NavbarData';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 const Navbar = () => {
 	const [show, setShow] = useState(false);
 	const navigation = useNavigate()
 	const handleClick = () => setShow(!show);
+	const [language, setlanguage] = useState(10);
+
+	const handleChange = (event) => {
+		console.log(event.target.value);
+		setlanguage(event.target.value);
+	};
 
 	const closeMobileMenu = (to, id) => {
 		navigation(to)
@@ -43,6 +50,19 @@ const Navbar = () => {
 								</NavLinks>
 							</NavItem>
 						))}
+						<FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+							<Select
+								labelId="demo-simple-select-standard-label"
+								id="demo-simple-select-standard"
+								value={language}
+								onChange={handleChange}
+								label="language"
+								sx={{ color: 'white' }}
+							>
+								<MenuItem value={10}>Монгол</MenuItem>
+								<MenuItem value={20}>English</MenuItem>
+							</Select>
+						</FormControl>
 					</NavMenu>
 				</NavbarContainer>
 			</Nav>

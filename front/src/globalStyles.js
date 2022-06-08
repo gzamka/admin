@@ -22,7 +22,7 @@ export const Container = styled.div`
 `;
 export const MainHeading = styled.h1`
 	font-size: clamp(2.3rem, 6vw, 4.5rem);
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 	color: ${({ inverse }) => (inverse ? '$403ae3' : '#fff')};
 	width: 100%;
 	letter-spacing: 4px;

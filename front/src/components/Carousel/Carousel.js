@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
 import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
-import { data, sliderSettings } from '../../data/CarouselData';
-import { Row, Heading, Section, TextWrapper } from '../../globalStyles';
+import { sliderSettings } from '../../data/CarouselData';
+import { Row, Section } from '../../globalStyles';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
+import { Link } from 'react-router-dom';
 import {
 	ButtonContainer,
 	ReviewSlider,
-	ImageWrapper,
-	CarouselImage,
-	CardButton,
 } from './CarouselStyles';
 
-const Carousel = () => {
+const Carousel = ({ docs }) => {
 	const [sliderRef, setSliderRef] = useState(null);
-
 	return (
 		<Section margin="auto" maxWidth="1280px" padding="50px 70px" inverse>
 			<Row justify="space-between" margin="1rem" wrap="wrap">
-				<Heading width="auto" inverse>
+				<Typography variant="h3" component="div" sx={{marginLeft: '10px'}}>
 					Products
-				</Heading>
+				</Typography>
 				<ButtonContainer>
 					<IconContext.Provider value={{ size: '3rem', color: '#1d609c' }}>
 						<FaArrowCircleLeft onClick={sliderRef?.slickPrev} />
@@ -27,22 +29,38 @@ const Carousel = () => {
 					</IconContext.Provider>
 				</ButtonContainer>
 			</Row>
-
 			<ReviewSlider {...sliderSettings} ref={setSliderRef}>
-				{data.map((el, index) => (
-					<ImageWrapper key={index}>
-						<CarouselImage src={el.image} />
-						<TextWrapper size="1.1rem" margin="0.4rem 0 0" weight="bold">
-							{el.title}
-						</TextWrapper>
-						<TextWrapper size="0.9rem" margin="0.7rem" color="#4f4f4f">
-							{el.description}
-						</TextWrapper>
-						<CardButton>More information</CardButton>
-					</ImageWrapper>
+				{docs?.map((el, index) => (
+					<Link key={index} to={`/products/${el.id}`}>
+						<Card sx={{ maxWidth: 345 }}>
+							<CardActionArea>
+								<CardMedia
+									component="img"
+									height="140"
+									image={el.img[0].imgUrl}
+									alt="green iguana"
+									sx={{ height: '260px' }}
+								/>
+								<CardContent>
+									<Typography gutterBottom variant="h5" component="div">
+										{el.title}
+									</Typography>
+									<Typography variant="body2" color="text.secondary" sx={{ height: '60px', overflowY: 'hidden' }}>
+										{el.description}
+									</Typography>
+								</CardContent>
+							</CardActionArea>
+							<CardActions>
+								<Button size="small" color="primary">
+									More information
+								</Button>
+							</CardActions>
+						</Card>
+					</Link>
+
 				))}
 			</ReviewSlider>
-		</Section>
+		</Section >
 	);
 };
 

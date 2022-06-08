@@ -14,6 +14,7 @@ import {
 
 import { useInView } from 'react-intersection-observer';
 import { useAnimation } from 'framer-motion';
+import { Typography } from '@mui/material';
 
 export const Content = ({
 	primary,
@@ -67,7 +68,9 @@ export const Content = ({
 								animate={animation}
 								inverse={inverse}
 							>
-								{description}
+								<Typography variant="h6" component="span">
+									{description}
+								</Typography>
 							</Subtitle>
 							<ContentButton
 								initial={initial}
