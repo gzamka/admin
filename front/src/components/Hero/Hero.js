@@ -1,10 +1,8 @@
 import { Typography } from '@mui/material';
 import React from 'react';
 import { Container, MainHeading } from '../../globalStyles';
-import { UselanguageContext } from '../../languageContext';
 import { HeroVideo, HeroSection } from './HeroStyles';
-const Hero = () => {
-	const { language } = UselanguageContext()
+const Hero = ({ language }) => {
 	return (
 		<HeroSection>
 			<HeroVideo src="./assets/hero.mp4" autoPlay muted />

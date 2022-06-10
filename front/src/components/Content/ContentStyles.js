@@ -71,11 +71,11 @@ export const TopLine = styled(motion.div)`
 export const Img = styled(motion.img)`
 	padding-right: 0;
 	border: 0;
-	max-width: 100%;
+	width: 100%;
 	vertical-align: middle;
 	display: inline-block;
 	object-fit: cover;
-	max-height: 700px;
+	height: 100%;
 	z-index: 1;
 `;
 

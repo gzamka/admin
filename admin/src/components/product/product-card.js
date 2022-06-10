@@ -63,7 +63,7 @@ export const ProductCard = ({ product, col }) => {
               <Typography
                 color="textPrimary"
                 gutterBottom
-                variant="h6"
+                variant="h5"
               >
                 {product.title}
               </Typography>

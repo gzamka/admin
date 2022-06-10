@@ -17,21 +17,17 @@ import { useAnimation } from 'framer-motion';
 import { Typography } from '@mui/material';
 
 export const Content = ({
-	primary,
 	topLine,
 	headline,
 	description,
 	buttonLabel,
 	img,
-	alt,
 	inverse,
 	reverse,
 }) => {
 	const initial = { opacity: 0, y: 30 };
 	const animation = useAnimation();
-
 	const { ref, inView } = useInView({ threshold: 0.2 });
-
 	useEffect(() => {
 		if (inView) {
 			animation.start({
@@ -77,7 +73,6 @@ export const Content = ({
 								transition={{ delay: 1, duration: 0.6 }}
 								animate={animation}
 								inverse={inverse}
-								primary={primary}
 							>
 								{buttonLabel}
 							</ContentButton>
@@ -91,7 +86,7 @@ export const Content = ({
 						<ImgWrapper>
 							<Img
 								src={img}
-								alt={alt}
+								alt="#"
 								whileHover={{ rotate: 2, scale: 1.02 }}
 								transition={{ duration: 0.5 }}
 							/>

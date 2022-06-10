@@ -6,18 +6,18 @@ export default function SingleNews({ el }) {
     const [bool, setbool] = useState(false)
     const { title, img, id, date } = el
     const _date = new Date(date)
+    const convertedDate = _date.getDate() + "/" + (_date.getMonth() + 1) + "/" + _date.getFullYear()
     setTimeout(() => {
         setbool(true)
     }, 500)
-    const convertedDate = _date.getDate() + "/" + (_date.getMonth() + 1) + "/" + _date.getFullYear()
     return (
         <>
             <Link to={`/news/${id}`}>
-                <Box className="Newscontainer">
+                <Box sx={styles.container}>
                     {!bool ? <Skeleton variant="rectangular" sx={styles.skeleton} /> :
                         <img alt="#" src={img[0].imgUrl} className="Newsimg" />}
                     <Box sx={{ paddingTop: '10px' }}>
-                        <Typography variant="h6" component="h1">
+                        <Typography variant="h6" component="h6">
                             {title}
                         </Typography>
                         <Box sx={styles.date}>{convertedDate}</Box>
@@ -36,6 +36,9 @@ const styles = {
     },
     date: {
         color: 'gray', paddingTop: '6px'
+    },
+    container: {
+        width: "28vw", height: "100%",
     }
 
 }

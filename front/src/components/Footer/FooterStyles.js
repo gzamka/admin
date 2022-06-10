@@ -126,7 +126,7 @@ export const FooterLogo = styled(Link)`
 export const SocialIcon = styled.img`
 	margin-right: 10px;
 	width: 200px;
-	height: 70px;
+	height: 63.7px;
 `;
 
 export const FooterRights = styled.div`

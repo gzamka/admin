@@ -10,7 +10,7 @@ export const SingleProduct = ({ el, p }) => {
                     <span className="helper"></span>
                     <img alt="#" src={img[0].imgUrl} className="img" />
                     <Box className="title_container">
-                        <Typography variant="h5" component="h1" sx={{ lineHeight: '50px' }}>
+                        <Typography variant="h5" component="h5" sx={{ lineHeight: '50px' }}>
                             {title}
                         </Typography>
                     </Box>

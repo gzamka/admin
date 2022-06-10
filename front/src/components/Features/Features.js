@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Section } from  '../../globalStyles';
+import { Container, Section } from '../../globalStyles';
 import {
 	FeatureText,
 	FeatureTitle,
@@ -35,9 +35,9 @@ const Features = () => {
 							transition={{ duration: 0.5 + index * 0.1 }}
 							key={index}
 						>
-							<FeatureImageWrapper className={el.imgClass}>
+							{/* <FeatureImageWrapper className={el.imgClass}>
 								{el.icon}
-							</FeatureImageWrapper>
+							</FeatureImageWrapper> */}
 							<FeatureName>{el.name}</FeatureName>
 							<FeatureText>{el.description}</FeatureText>
 						</FeatureColumn>

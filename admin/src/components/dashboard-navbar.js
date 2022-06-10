@@ -46,6 +46,7 @@ export const DashboardNavbar = (props) => {
           }}
         >
           <IconButton
+          aria-label="button"
             onClick={onSidebarOpen}
             sx={{
               display: {

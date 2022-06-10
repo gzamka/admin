@@ -15,9 +15,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { data } from '../../data/NavbarData';
 import { FormControl, MenuItem, Select } from '@mui/material';
-import { UselanguageContext } from '../../languageContext'
-const Navbar = () => {
-	const { language, handleChange } = UselanguageContext()
+const Navbar = ({ language, handleChange }) => {
 	const [show, setShow] = useState(false);
 	const navigation = useNavigate()
 	const handleClick = () => setShow(!show);
@@ -55,7 +53,7 @@ const Navbar = () => {
 								sx={{ color: 'white' }}
 							>
 								<MenuItem value={10}>
-									<img src="mongolia.png" alt="#" style={{ width: '30px', height: "20px" }} />
+									<img src="mongolia.png" alt="#" style={{ width: '30px', height: "15px" }} />
 								</MenuItem>
 								<MenuItem value={20}>
 									<img src="usa.png" alt="#" style={style.img} />

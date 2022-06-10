@@ -9,15 +9,6 @@ body {
   height: 200px;
   object-fit: cover;
 }
-
-/* .container {
-  margin-top: 90px;
-  width: 580px;
-  height: 200px;
-  justify-content: space-between;
-  /* overflow-y: scroll; */
-/* border: 1px solid black; */
-/* } */
 p {
   font-family: "lucida grande";
   color: rgb(179, 179, 179);

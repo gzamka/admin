@@ -1,13 +1,11 @@
 import "../App.css"
-import { UselanguageContext } from "../languageContext"
 import { SingleProduct } from "./SIngleProduct"
-export const Products = () => {
-    const { data } = UselanguageContext()
+export const Products = ({ docs }) => {
     return (
         <div style={styles.container}>
             <div style={styles.subcontainer}>
                 <div className="grid">
-                    {data && data.map((el, i) => {
+                    {docs?.map((el, i) => {
                         return <SingleProduct key={i} el={el} />
                     })}
                 </div>

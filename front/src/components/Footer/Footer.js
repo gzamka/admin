@@ -21,25 +21,25 @@ function Footer() {
 			<FooterWrapper>
 				<FooterGrid justify="space-between">
 					<FooterColumn id="footerLogo">
-						<FooterLogo to="/">
-							<SocialIcon src="Mass tech logo.png"/>
+						<FooterLogo to="/" aria-label="home">
+							<SocialIcon src="Mass tech logo.png" alt="#"/>
 						</FooterLogo>
 						<FooterAddress>
 							Ulaanbaatar city Khan-Uul District Mazzy Lounge Building 4th floor
 						</FooterAddress>
 
-						<Row align="center" margin="auto  0 0 0" gap="1rem">
+						{/* <Row align="center" margin="auto  0 0 0" gap="1rem">
 							{footerSocialData.map((social, index) => (
 								<FooterSocialIcon
 									key={index}
 									// href="/"
 									// target="_blank"
-									aria-label={social.name}
+									// aria-label={social.name}
 								>
 									{social.icon}
 								</FooterSocialIcon>
 							))}
-						</Row>
+						</Row> */}
 					</FooterColumn>
 					{footerData.map((footerItem, index) => (
 						<FooterLinkItems key={index}>

@@ -21,7 +21,7 @@ const Customers = () => {
       >
         <Container maxWidth={false}>
           <CustomerListToolbar />
-          <Box sx={{ mt: 3, height: '400px',width:'500px' }}>
+          <Box sx={{ mt: 3, height: '400px', width: '500px' }}>
             <Mailcustomers />
           </Box>
         </Container>
