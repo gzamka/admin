@@ -3,7 +3,6 @@ import { Button, Typography, Avatar, Box } from '@mui/material';
 import { useState } from 'react';
 import { SingleProduct } from './SIngleProduct';
 export const ProductDetail = ({ el, docs }) => {
-    console.log(el.img);
     let [counter, setcounter] = useState(0)
     const rightbtn = () => {
         if (counter < el.img.length - 1) setcounter(counter += 1)
@@ -14,18 +13,18 @@ export const ProductDetail = ({ el, docs }) => {
     return (
         <>
             <Box sx={style.container}>
-                <Box sx={{ width: '95%', height: '90%' }}>
+                <Box sx={style.subtainer}>
                     <div className="flex" style={{ justifyContent: 'space-between' }}>
                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                             <Avatar alt="Remy Sharp" variant="square" src={el?.img[counter].imgUrl} sx={style.img} />
-                            <Box sx={{ display: 'flex', marginTop: '20px', width: "34vw", height: '100px', alignItems: 'center' }}>
+                            <Box sx={style.box}>
                                 <button className='lbtn' onClick={leftbtn} />
                                 <Box sx={style.middle}>
                                     {el.img.map((element, i) => {
                                         let a = i === counter ? <Box sx={i !== 0 ? style.containerimg : style.containerimg1} key={i}>
                                             <img alt="#" src={element.imgUrl} style={style.image} />
                                         </Box> :
-                                            <Box key={i} sx={{ marginLeft: '10px', width: "150.09px", height: '117.15px' }}>
+                                            <Box key={i} sx={style.imgcontainer}>
                                                 <img alt="#" src={element.imgUrl} style={style.image} /></Box>
                                         return a
                                     })}
@@ -61,6 +60,15 @@ const style = {
         display: 'flex',
         justifyContent: 'space-between',
         marginTop: '10px'
+    },
+    box: {
+        display: 'flex', marginTop: '20px', width: "34vw", height: '100px', alignItems: 'center'
+    },
+    imgcontainer: {
+        marginLeft: '10px', width: "150.09px", height: '117.15px'
+    },
+    subtainer: {
+        width: '95%', height: '90%'
     },
     image: {
         width: "150.09px", height: '117.15px'

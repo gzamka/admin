@@ -20,7 +20,7 @@ export default function SingleNews({ el }) {
                         <Typography variant="h6" component="h1">
                             {title}
                         </Typography>
-                        <Box sx={{ color: 'gray', paddingTop: '6px' }}>{convertedDate}</Box>
+                        <Box sx={styles.date}>{convertedDate}</Box>
                     </Box>
                 </Box>
             </Link>
@@ -33,6 +33,9 @@ const styles = {
         height: "250px",
         margin: "0 auto",
         borderRadius: "6px",
+    },
+    date: {
+        color: 'gray', paddingTop: '6px'
     }
 
 }

@@ -1,15 +1,26 @@
 import "../App.css"
+import { UselanguageContext } from "../languageContext"
 import { SingleProduct } from "./SIngleProduct"
-export const Products = ({ docs }) => {
+export const Products = () => {
+    const { data } = UselanguageContext()
     return (
-        <div style={{height: 'auto', paddingTop: '100px', paddingBottom: '70px' }}>
-            <div style={{ width: '90vw', height: "auto", margin: '0 auto' }}>
+        <div style={styles.container}>
+            <div style={styles.subcontainer}>
                 <div className="grid">
-                    {docs && docs.map((el, i) => {
+                    {data && data.map((el, i) => {
                         return <SingleProduct key={i} el={el} />
                     })}
                 </div>
             </div>
         </div>
     )
+}
+
+const styles = {
+    container: {
+        height: 'auto', paddingTop: '100px', paddingBottom: '70px'
+    },
+    subcontainer: {
+        width: '90vw', height: "auto", margin: '0 auto'
+    }
 }

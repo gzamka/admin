@@ -13,13 +13,15 @@ import {
 	ButtonContainer,
 	ReviewSlider,
 } from './CarouselStyles';
+import { UselanguageContext } from '../../languageContext';
 
-const Carousel = ({ docs }) => {
+const Carousel = () => {
 	const [sliderRef, setSliderRef] = useState(null);
+	const { data } = UselanguageContext()
 	return (
 		<Section margin="auto" maxWidth="1280px" padding="50px 70px" inverse>
 			<Row justify="space-between" margin="1rem" wrap="wrap">
-				<Typography variant="h3" component="div" sx={{marginLeft: '10px'}}>
+				<Typography variant="h3" component="div" sx={{ marginLeft: '10px' }}>
 					Products
 				</Typography>
 				<ButtonContainer>
@@ -30,7 +32,7 @@ const Carousel = ({ docs }) => {
 				</ButtonContainer>
 			</Row>
 			<ReviewSlider {...sliderSettings} ref={setSliderRef}>
-				{docs?.map((el, index) => (
+				{data?.map((el, index) => (
 					<Link key={index} to={`/products/${el.id}`}>
 						<Card sx={{ maxWidth: 345 }}>
 							<CardActionArea>

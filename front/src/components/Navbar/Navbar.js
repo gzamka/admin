@@ -14,18 +14,13 @@ import {
 } from './NavbarStyles.js';
 import { useNavigate } from 'react-router-dom';
 import { data } from '../../data/NavbarData';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-
+import { FormControl, MenuItem, Select } from '@mui/material';
+import { UselanguageContext } from '../../languageContext'
 const Navbar = () => {
+	const { language, handleChange } = UselanguageContext()
 	const [show, setShow] = useState(false);
 	const navigation = useNavigate()
 	const handleClick = () => setShow(!show);
-	const [language, setlanguage] = useState(10);
-
-	const handleChange = (event) => {
-		console.log(event.target.value);
-		setlanguage(event.target.value);
-	};
 
 	const closeMobileMenu = (to, id) => {
 		navigation(to)
@@ -55,12 +50,16 @@ const Navbar = () => {
 								labelId="demo-simple-select-standard-label"
 								id="demo-simple-select-standard"
 								value={language}
-								onChange={handleChange}
+								onChange={(e) => handleChange(e)}
 								label="language"
 								sx={{ color: 'white' }}
 							>
-								<MenuItem value={10}>Монгол</MenuItem>
-								<MenuItem value={20}>English</MenuItem>
+								<MenuItem value={10}>
+									<img src="mongolia.png" alt="#" style={{ width: '30px', height: "20px" }} />
+								</MenuItem>
+								<MenuItem value={20}>
+									<img src="usa.png" alt="#" style={style.img} />
+								</MenuItem>
 							</Select>
 						</FormControl>
 					</NavMenu>
@@ -69,5 +68,9 @@ const Navbar = () => {
 		</IconContext.Provider>
 	);
 };
-
+const style = {
+	img: {
+		width: '30px', height: '30px'
+	}
+}
 export default Navbar;
