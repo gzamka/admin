@@ -5,7 +5,7 @@ export default function SpecificNews({ el }) {
     const _date = new Date(date)
     const convertedDate = _date.getDate() + "/" + (_date.getMonth() + 1) + "/" + _date.getFullYear()
     return (
-        <Box sx={styles.container}>
+        <Box className='specificnews'>
             <Box>
                 <Typography variant="h4" component="h2" sx={{ textAlign: 'center' }}>
                     {title}
@@ -20,9 +20,6 @@ export default function SpecificNews({ el }) {
     )
 }
 const styles = {
-    container: {
-        width: '800px', margin: '0 auto', marginTop: '120px', marginBottom: '40px'
-    },
     description: {
         width: '95%', margin: '0 auto', marginTop: '15px'
     },

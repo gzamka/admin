@@ -15,7 +15,7 @@ export const data = [
 		id: "news"
 	},
 	{
-		to: '/contact',
+		to: '/contactus',
 		text: 'Contact us',
 		id: "contact"
 	},

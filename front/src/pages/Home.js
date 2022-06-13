@@ -4,7 +4,7 @@ import { Content } from '../components/Content/Content';
 import Features from '../components/Features/Features';
 import Hero from '../components/Hero/Hero';
 import { heroOne, heroTwo, heroThree } from '../data/HeroData';
-const Home = ({ docs, language }) => {
+const Home = ({ docs, language,news }) => {
 	return (
 		<>
 			<Hero language={language} />
@@ -12,7 +12,7 @@ const Home = ({ docs, language }) => {
 			<Content {...heroOne} />
 			<Content {...heroTwo} />
 			<Content {...heroThree} />
-			<Features />
+			<Features news={news} />
 		</>
 	);
 };

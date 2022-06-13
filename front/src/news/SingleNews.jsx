@@ -38,7 +38,7 @@ const styles = {
         color: 'gray', paddingTop: '6px'
     },
     container: {
-        width: "28vw", height: "100%",
+        width: "100%", height: "100%",
     }
 
 }

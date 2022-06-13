@@ -1,8 +1,10 @@
 import '../App.css'
-import { Button, Typography, Avatar, Box } from '@mui/material';
+import { Button, Typography, Box } from '@mui/material';
 import { useState } from 'react';
 import { SingleProduct } from './SIngleProduct';
+import { useNavigate } from 'react-router-dom';
 export const ProductDetail = ({ el, docs }) => {
+    const navigation = useNavigate()
     let [counter, setcounter] = useState(0)
     const rightbtn = () => {
         if (counter < el.img.length - 1) setcounter(counter += 1)
@@ -10,16 +12,18 @@ export const ProductDetail = ({ el, docs }) => {
     const leftbtn = () => {
         if (counter > 0) setcounter(counter -= 1)
     }
+    const contact = () => navigation('/contactus')
+    
     return (
         <>
-            <Box sx={style.container}>
+            <Box className='pContainer'>
                 <Box sx={style.subtainer}>
-                    <div className="flex" style={{ justifyContent: 'space-between' }}>
-                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                            <Avatar alt="Remy Sharp" variant="square" src={el?.img[counter].imgUrl} sx={style.img} />
-                            <Box sx={style.box}>
+                    <div className="media">
+                        <Box className='first'>
+                            <img alt="#" src={el?.img[counter].imgUrl} className="avatar" />
+                            <Box className='box'>
                                 <button className='lbtn' onClick={leftbtn} />
-                                <Box sx={style.middle}>
+                                <Box className='middle'>
                                     {el.img.map((element, i) => {
                                         let a = i === counter ? <Box sx={i !== 0 ? style.containerimg : style.containerimg1} key={i}>
                                             <img alt="#" src={element.imgUrl} style={style.image} />
@@ -32,21 +36,21 @@ export const ProductDetail = ({ el, docs }) => {
                                 <button className='btn' onClick={rightbtn} />
                             </Box>
                         </Box>
-                        <Box sx={{ width: '40vw' }}>
+                        <Box className='second'>
                             <Typography variant="h4" component="h2">
                                 {el.title}
                             </Typography>
                             <Typography variant="h6" component="h2" sx={style.description}>
                                 {el.description}
                             </Typography>
-                            <Button sx={style.button} variant="contained">Contact us</Button>
+                            <Button sx={style.button} variant="contained" onClick={contact}>Contact us</Button>
                         </Box>
                     </div>
                 </Box>
             </Box >
             <Box sx={style.center}>
                 <Typography variant="h6" component="h2">Төстэй бараанууд</Typography>
-                <Box sx={style.flex}>
+                <Box className='similarproducts'>
                     {docs.slice(0, 3).map((doc, i) => {
                         return <SingleProduct el={doc} key={i} p={1} />
                     })}
@@ -56,14 +60,6 @@ export const ProductDetail = ({ el, docs }) => {
     )
 }
 const style = {
-    flex: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        marginTop: '10px'
-    },
-    box: {
-        display: 'flex', marginTop: '20px', width: "34vw", height: '100px', alignItems: 'center'
-    },
     imgcontainer: {
         marginLeft: '10px', width: "150.09px", height: '117.15px'
     },
@@ -72,9 +68,6 @@ const style = {
     },
     image: {
         width: "150.09px", height: '117.15px'
-    },
-    middle: {
-        display: 'flex', alignItems: 'center', width: '85%', height: '150px', marginTop: '20px', overflowX: 'scroll'
     },
     containerimg: {
         marginLeft: '10px', minWidth: "160.09px", height: '127.15px', border: '1px solid black', display: 'flex',
@@ -97,21 +90,5 @@ const style = {
         position: 'absolute',
         right: '50px',
         bottom: '30px',
-    },
-    container: {
-        display: "flex",
-        alignItems: "center",
-        margin: "0 auto",
-        justifyContent: "center",
-        width: "80vw",
-        height: "500px",
-        backgroundColor: "#f5f5f5",
-        position: "relative",
-        marginTop: '100px',
-    },
-    img: {
-        width: "34vw", height: '298.82px', border: '1px solid #f5f5f5'
     }
-
-
 }

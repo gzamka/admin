@@ -28,18 +28,18 @@ function Footer() {
 							Ulaanbaatar city Khan-Uul District Mazzy Lounge Building 4th floor
 						</FooterAddress>
 
-						{/* <Row align="center" margin="auto  0 0 0" gap="1rem">
+						<Row align="center" margin="auto  0 0 0" gap="1rem">
 							{footerSocialData.map((social, index) => (
 								<FooterSocialIcon
 									key={index}
-									// href="/"
-									// target="_blank"
-									// aria-label={social.name}
+									href="/"
+									target="_blank"
+									aria-label={social.name}
 								>
 									{social.icon}
 								</FooterSocialIcon>
 							))}
-						</Row> */}
+						</Row>
 					</FooterColumn>
 					{footerData.map((footerItem, index) => (
 						<FooterLinkItems key={index}>
