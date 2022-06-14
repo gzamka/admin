@@ -96,6 +96,8 @@ export const Subtitle = styled(motion.p)`
 	margin-bottom: 35px;
 	line-height: 24px;
 	color: ${({ inverse }) => (inverse ? '#6a6a6a' : 'white')};
+	height: 350px;
+	overflow-y: scroll
 `;
 
 export const ContentButton = styled(motion.button)`

@@ -8,17 +8,15 @@ import {
   Grid,
   TextField,
 } from "@mui/material";
-export const AccountProfileDetails = ({setValues, values, fn,bool,update,col}) => {
-  const handleChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value,
-    });
-  };
+import 'react-quill/dist/quill.snow.css'
+import { QuillNoSSRWrapper } from "./Editor";
+export const AccountProfileDetails = ({ setValues, values, fn, bool, update, col, description, setdescription }) => {
+  const handleChange = (event) => setValues(event.target.value);
+  const descrip = (e) => setdescription(e)
   return (
     <form autoComplete="off" noValidate >
       <Card>
-        <CardHeader title={col==='news' ? "Add news" : "Add product"} />
+        <CardHeader title={col === 'news' ? "Add news" : "Add product"} />
         <Divider />
         <CardContent>
           <Grid container spacing={3} style={styles.container}>
@@ -26,26 +24,21 @@ export const AccountProfileDetails = ({setValues, values, fn,bool,update,col}) =
               <TextField
                 maxRows={1}
                 fullWidth
-                label={col==='news' ? "News title" : "Product title"}
+                label={col === 'news' ? "News title" : "Product title"}
                 name="title"
                 onChange={handleChange}
                 required
-                value={values.title}
+                value={values}
                 variant="outlined"
               />
             </Grid>
             <Box style={styles.buttonstyle}>
-              <TextField
-                multiline
-                minRows={15}
-                fullWidth
-                label={col==='news' ? "News Description" : "Product description"}
-                name="description"
-                onChange={handleChange}
-                required
-                value={values.description}
-                variant="outlined"
-              />
+              <QuillNoSSRWrapper
+                style={{ height: "300px" }}
+                theme="snow"
+                value={description}
+                onChange={(e) => descrip(e)}
+                placeholder={col === 'news' ? "News Description" : "Product description"} />
             </Box>
           </Grid>
         </CardContent>
@@ -57,13 +50,13 @@ export const AccountProfileDetails = ({setValues, values, fn,bool,update,col}) =
             p: 2,
           }}
         >
-          {!bool ? 
-          <Button color="primary" variant="contained" onClick={fn}>
-            Save
-          </Button> :
-          <Button color="primary" variant="contained" onClick={update}>
-            Save Changes
-          </Button>}
+          {!bool ?
+            <Button color="primary" variant="contained" onClick={fn}>
+              Save
+            </Button> :
+            <Button color="primary" variant="contained" onClick={update}>
+              Save Changes
+            </Button>}
         </Box>
       </Card>
     </form>

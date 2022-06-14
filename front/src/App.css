@@ -9,12 +9,7 @@ body {
   height: 200px;
   object-fit: cover;
 }
-p {
-  font-family: "lucida grande";
-  color: rgb(179, 179, 179);
-  height: 270px;
-  overflow-y: scroll;
-}
+
 a {
   text-decoration: none;
   color: black;
@@ -55,8 +50,10 @@ a {
   vertical-align: middle;
 }
 .title_container {
-  height: 50px;
-  /* display: flex; */
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #f5f5f5;
 }
 .newsgrid {
@@ -68,7 +65,7 @@ a {
 .grid {
   display: grid;
   grid-template-columns: auto auto auto;
-  row-gap: 70px;
+  row-gap: 100px;
   column-gap: 30px;
 }
 .helper {
@@ -105,9 +102,10 @@ a {
   margin: 0 auto;
   justify-content: center;
   width: 80vw;
-  height: 500px;
+  height: 700px;
   background-color: #f5f5f5;
   position: relative;
+  padding-bottom: 30px;
   margin-top: 100px;
 }
 .media {
@@ -153,18 +151,34 @@ a {
   margin-top: 120px;
   margin-bottom: 40px;
 }
+.a {
+  width: 25vw;
+}
+.desc {
+  color: black;
+  margin-top: 15px;
+  height: 550px;
+  overflow: scroll;
+}
 @media (max-width: 900px) {
   .box {
     width: 100%;
   }
-  .specificnews{
+  .a {
+    width: 40vw;
+  }
+  .specificnews {
     width: 100%;
   }
   .similarproducts {
     display: grid;
     grid-template-columns: auto auto;
     column-gap: 20px;
-    row-gap: 50px;
+    row-gap: 120px;
+  }
+  .title_container {
+    font-size: 0.5rem;
+    height: 110px;
   }
   .newsgrid {
     grid-template-columns: auto auto;
@@ -183,6 +197,7 @@ a {
   .grid {
     grid-template-columns: auto auto;
     column-gap: 30px;
+    row-gap: 130px;
   }
   .pContainer {
     height: auto;
@@ -199,7 +214,7 @@ a {
   .second {
     width: 100%;
     margin-top: 50px;
-    height: 300px;
+    height: 600px;
     overflow-y: scroll;
   }
   .avatar {
@@ -210,11 +225,18 @@ a {
 }
 @media (max-width: 650px) {
   .similarproducts {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
   }
-  .img{
-   margin-top: 20px;
+  .a {
+    width: 100%;
+  }
+  .title_container {
+    height: 70px;
+  }
+  .img {
+    margin-top: 20px;
   }
   .newsgrid {
     display: grid;
@@ -223,7 +245,7 @@ a {
   }
   .grid {
     grid-template-columns: auto;
-    row-gap: 70px;
+    row-gap: 90px;
   }
 }
 @media (max-width: 830px) {
