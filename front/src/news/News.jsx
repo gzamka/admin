@@ -4,7 +4,7 @@ import SingleNews from './SingleNews'
 import "../App.css"
 export default function News({ docs: { data } }) {
     return (
-        <Box sx={{ height: '100vh' }}>
+        <Box sx={{ minHeight: '100vh', height: 'auto' }}>
             <Box className='newsContainer'>
                 <Box className="newsgrid">
                     {data?.map((el, i) => {

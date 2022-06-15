@@ -16,7 +16,7 @@ export const Products = ({ docs }) => {
 
 const styles = {
     container: {
-        height: 'auto', paddingTop: '100px', paddingBottom: '25%'
+        height: 'auto', paddingTop: '100px', paddingBottom: '25%', minHeight: '100vh'
     },
     subcontainer: {
         width: '90vw', height: "auto", margin: '0 auto'
