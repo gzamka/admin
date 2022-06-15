@@ -13,6 +13,7 @@ export const ProductDetail = ({ el, docs }) => {
     const leftbtn = () => {
         if (counter > 0) setcounter(counter -= 1)
     }
+    const imageClick = (i) => setcounter(i)
     const contact = () => navigation('/contactus')
     return (
         <>
@@ -25,10 +26,10 @@ export const ProductDetail = ({ el, docs }) => {
                                 <button className='lbtn' onClick={leftbtn} />
                                 <Box className='middle'>
                                     {el.img.map((element, i) => {
-                                        let a = i === counter ? <Box sx={i !== 0 ? style.containerimg : style.containerimg1} key={i}>
+                                        let a = i === counter ? <Box onClick={() => imageClick(i)} sx={i !== 0 ? style.containerimg : style.containerimg1} key={i}>
                                             <img alt="#" src={element.imgUrl} style={style.image} />
                                         </Box> :
-                                            <Box key={i} sx={style.imgcontainer}>
+                                            <Box onClick={() => imageClick(i)} key={i} sx={style.imgcontainer}>
                                                 <img alt="#" src={element.imgUrl} style={style.image} /></Box>
                                         return a
                                     })}
@@ -37,10 +38,10 @@ export const ProductDetail = ({ el, docs }) => {
                             </Box>
                         </Box>
                         <Box className='second'>
-                            <Typography variant="h5" component="h2">
+                            <Typography variant="h5" component="h2" sx={{ fontWeight: 'bold', height: "45px", borderBottom: "1px solid #E2E2E2"}}>
                                 {el.title}
                             </Typography>
-                            <Typography variant="h6" component="h2" className='desc'>
+                            <Typography sx={{ marginTop: '10px' }} className='desc' variant="h6" component="h2">
                                 {parse(el.description)}
                             </Typography>
                             <Button sx={style.button} variant="contained" onClick={contact}>Contact us</Button>
@@ -52,7 +53,7 @@ export const ProductDetail = ({ el, docs }) => {
                 <Typography variant="h6" component="h2">Төстэй бараанууд</Typography>
                 <Box className='similarproducts'>
                     {docs.slice(0, 3).map((doc, i) => {
-                        return <Box onClick={() => setcounter(0)} className='a' key={i}><SingleProduct el={doc} p={1} /></Box>
+                        return <Box onClick={() => setcounter(0)} key={i}><SingleProduct el={doc} p={1} a={1} /></Box>
                     })}
                 </Box>
             </Box>
@@ -81,7 +82,7 @@ const style = {
         width: '80vw',
         margin: '0 auto',
         marginTop: '30px',
-        marginBottom: '20%',
+        marginBottom: '40px',
     },
     button: {
         position: 'absolute',

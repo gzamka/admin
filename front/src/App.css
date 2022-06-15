@@ -7,7 +7,7 @@ body {
 .img {
   width: 336px;
   height: 200px;
-  object-fit: cover;
+  object-fit: contain;
 }
 .nav {
   display: flex;
@@ -16,9 +16,11 @@ body {
   padding: 0.5rem 1rem;
   height: 100%;
   color: white;
+  justify-content: center;
 }
 .activeNav {
   border-bottom: 5px solid #f56850;
+  justify-content: center;
   color: #f56850;
   display: flex;
   align-items: center;
@@ -59,8 +61,8 @@ a {
   border-radius: 6px;
 }
 .img {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 100%;
+  max-height: 100%;
   margin: 0 auto;
   display: inline-block;
   vertical-align: middle;
@@ -70,7 +72,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #f5f5f5;
+  /* border: 1px solid #f5f5f5; */
 }
 .newsgrid {
   display: grid;
@@ -81,23 +83,25 @@ a {
 .grid {
   display: grid;
   grid-template-columns: auto auto auto;
-  row-gap: 100px;
+  row-gap: 30px;
   column-gap: 30px;
-}
-.helper {
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%;
 }
 .Newscontainer {
   width: 28vw;
   height: 100%;
 }
 .container {
-  width: 100%;
-  height: 100%;
+  width: 28vw;
+  /* width: 100%;
+  min-width: 33%; */
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  background-color: #f5f5f5;
+  justify-content: center;
+  border: 1px solid #e2e2e2;
+  border-radius: 18px;
 }
 .productscontainer {
   width: 100vw;
@@ -119,10 +123,15 @@ a {
   justify-content: center;
   width: 80vw;
   height: 700px;
-  background-color: #f5f5f5;
+  border: 1px solid #e2e2e2;
+  border-radius: 18px;
   position: relative;
   padding-bottom: 30px;
   margin-top: 100px;
+}
+.newssize {
+  width: 28vw;
+  height: 100%;
 }
 .media {
   display: flex;
@@ -139,7 +148,17 @@ a {
   width: 34vw;
   height: 485.82px;
   border: 1px solid #f5f5f5;
-  object-fit: cover;
+  object-fit: contain;
+}
+.home {
+  color: white;
+  height: 60%;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+}
+.home::-webkit-scrollbar {
+  display: none;
 }
 .middle {
   display: flex;
@@ -148,6 +167,11 @@ a {
   height: 150px;
   margin-top: 20px;
   overflow-x: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+}
+.middle::-webkit-scrollbar {
+  /* display: none; */
 }
 .box {
   display: flex;
@@ -169,18 +193,34 @@ a {
 }
 .a {
   width: 25vw;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border: 1px solid #e2e2e2;
+  border-radius: 18px;
 }
 .desc {
+  margin-top: 30px;
   color: black;
-  margin-top: 15px;
   height: 550px;
-  overflow: scroll;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+}
+.desc::-webkit-scrollbar {
+  display: none;
 }
 @media (max-width: 900px) {
   .box {
     width: 100%;
   }
   .a {
+    width: 40vw;
+  }
+  .newssize {
     width: 40vw;
   }
   .specificnews {
@@ -190,11 +230,14 @@ a {
     display: grid;
     grid-template-columns: auto auto;
     column-gap: 20px;
-    row-gap: 120px;
+    row-gap: 20px;
   }
   .title_container {
     font-size: 0.5rem;
     height: 110px;
+  }
+  .container {
+    width: 43vw;
   }
   .newsgrid {
     grid-template-columns: auto auto;
@@ -213,11 +256,7 @@ a {
   .grid {
     grid-template-columns: auto auto;
     column-gap: 30px;
-    row-gap: 130px;
-  }
-  .pContainer {
-    height: auto;
-    width: 100%;
+    row-gap: 30px;
   }
   .media {
     display: block;
@@ -238,15 +277,28 @@ a {
     height: 300px;
     margin-top: 10px;
   }
+  .pContainer {
+    height: auto;
+  }
 }
 @media (max-width: 650px) {
+  .newssize {
+    width: 90vw;
+  }
+  .pContainer {
+    width: 100vw;
+  }
   .similarproducts {
     display: flex;
     flex-direction: column;
     row-gap: 30px;
   }
+
   .a {
     width: 100%;
+  }
+  .container {
+    width: 90vw;
   }
   .title_container {
     height: 70px;
@@ -261,7 +313,7 @@ a {
   }
   .grid {
     grid-template-columns: auto;
-    row-gap: 90px;
+    row-gap: 30px;
   }
 }
 @media (max-width: 830px) {

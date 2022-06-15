@@ -97,7 +97,12 @@ export const Subtitle = styled(motion.p)`
 	line-height: 24px;
 	color: ${({ inverse }) => (inverse ? '#6a6a6a' : 'white')};
 	height: 350px;
-	overflow-y: scroll
+	overflow-y: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	::-webkit-scrollbar {
+		display: none;
+	  }
 `;
 
 export const ContentButton = styled(motion.button)`

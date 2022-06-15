@@ -13,7 +13,7 @@ export default function SingleNews({ el }) {
     return (
         <>
             <Link onClick={() => window.scrollTo(0, 0)} to={`/news/${id}`}>
-                <Box sx={styles.container}>
+                <Box className="newssize">
                     {!bool ? <Skeleton variant="rectangular" sx={styles.skeleton} /> :
                         <img alt="#" src={img[0].imgUrl} className="Newsimg" />}
                     <Box sx={{ paddingTop: '10px' }}>
@@ -36,9 +36,5 @@ const styles = {
     },
     date: {
         color: 'gray', paddingTop: '6px'
-    },
-    container: {
-        width: "100%", height: "100%",
     }
-
 }
