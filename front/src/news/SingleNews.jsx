@@ -12,7 +12,7 @@ export default function SingleNews({ el }) {
     }, 500)
     return (
         <>
-            <Link to={`/news/${id}`}>
+            <Link onClick={() => window.scrollTo(0, 0)} to={`/news/${id}`}>
                 <Box sx={styles.container}>
                     {!bool ? <Skeleton variant="rectangular" sx={styles.skeleton} /> :
                         <img alt="#" src={img[0].imgUrl} className="Newsimg" />}

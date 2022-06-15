@@ -9,40 +9,30 @@ import {
 	NavIcon,
 	MobileIcon,
 	NavMenu,
-	NavLinks,
-	NavItem,
 } from './NavbarStyles.js';
-import { useNavigate } from 'react-router-dom';
 import { data } from '../../data/NavbarData';
 import { FormControl, MenuItem, Select } from '@mui/material';
+import Logo from '../../img/Mass tech logo.png'
+import Mn from '../../img/mongolia.png'
+import Usa from '../../img/usa.png'
+import NavClick from './NavClick.js';
 const Navbar = ({ language, handleChange }) => {
 	const [show, setShow] = useState(false);
-	const navigation = useNavigate()
 	const handleClick = () => setShow(!show);
-
-	const closeMobileMenu = (to, id) => {
-		navigation(to)
-		setShow(false);
-	};
-
 	return (
 		<IconContext.Provider value={{ color: '#fff' }}>
 			<Nav>
 				<NavbarContainer>
-					<NavLogo to="/">
-						<NavIcon src="/Mass tech logo.png" alt="logo" />
+					<NavLogo to="/" onClick={() => window.scrollTo(0, 0)}>
+						<NavIcon src={Logo} alt="logo" />
 					</NavLogo>
 					<MobileIcon onClick={handleClick}>
 						{show ? <FaTimes /> : <CgMenuRight />}
 					</MobileIcon>
 					<NavMenu show={show}>
-						{data.map((el, index) => (
-							<NavItem key={index}>
-								<NavLinks onClick={() => closeMobileMenu(el.to, el.id)}>
-									{el.text}
-								</NavLinks>
-							</NavItem>
-						))}
+						{data.map((el, index) => {
+							return <NavClick key={index} setShow={setShow} el={el} />
+						})}
 						<FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
 							<Select
 								labelId="demo-simple-select-standard-label"
@@ -53,10 +43,10 @@ const Navbar = ({ language, handleChange }) => {
 								sx={{ color: 'white' }}
 							>
 								<MenuItem value={10}>
-									<img src="mongolia.png" alt="#" style={{ width: '30px', height: "15px" }} />
+									<img src={Mn} alt="#" style={style.img} />
 								</MenuItem>
 								<MenuItem value={20}>
-									<img src="usa.png" alt="#" style={style.img} />
+									<img src={Usa} alt="#" style={style.img} />
 								</MenuItem>
 							</Select>
 						</FormControl>
@@ -68,7 +58,7 @@ const Navbar = ({ language, handleChange }) => {
 };
 const style = {
 	img: {
-		width: '30px', height: '30px'
+		width: '30px', height: '30px', objectFit: 'contain'
 	}
 }
 export default Navbar;

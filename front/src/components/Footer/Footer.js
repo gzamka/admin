@@ -14,7 +14,7 @@ import {
 } from './FooterStyles';
 import { footerData, footerSocialData } from '../../data/FooterData';
 import { Row, Section } from '../../globalStyles'
-
+import Logo from '../../img/Mass tech logo.png'
 function Footer() {
 	return (
 		<Section padding="4rem 0 2rem 0">
@@ -22,7 +22,7 @@ function Footer() {
 				<FooterGrid justify="space-between">
 					<FooterColumn id="footerLogo">
 						<FooterLogo to="/" aria-label="home">
-							<SocialIcon src="Mass tech logo.png" alt="#"/>
+							<SocialIcon src={Logo} alt="#"/>
 						</FooterLogo>
 						<FooterAddress>
 							Ulaanbaatar city Khan-Uul District Mazzy Lounge Building 4th floor

@@ -5,7 +5,7 @@ export const SingleProduct = ({ el }) => {
     const { img, title,id } = el
     return (
         <>
-            <Link to={`/products/${id}`}>
+            <Link onClick={()=>window.scrollTo(0, 0)} to={`/products/${id}`}>
                 <Box className="container">
                     <span className="helper"></span>
                     <img alt="#" src={img[0].imgUrl} className="img" />

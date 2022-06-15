@@ -9,7 +9,23 @@ body {
   height: 200px;
   object-fit: cover;
 }
-
+.nav {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: 100%;
+  color: white;
+}
+.activeNav {
+  border-bottom: 5px solid #f56850;
+  color: #f56850;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: 100%;
+}
 a {
   text-decoration: none;
   color: black;

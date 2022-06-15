@@ -17,7 +17,6 @@ function App() {
   const handleChange = (event) => setlanguage(event.target.value);
   const { data } = useCustomhook("products")
   const news = useCustomhook('news')
-  // console.log(language);
   return (
     <BrowserRouter>
       <GlobalStyle />

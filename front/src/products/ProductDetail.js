@@ -14,7 +14,6 @@ export const ProductDetail = ({ el, docs }) => {
         if (counter > 0) setcounter(counter -= 1)
     }
     const contact = () => navigation('/contactus')
-  console.log(el.img[counter]);
     return (
         <>
             <Box className='pContainer'>
@@ -53,11 +52,7 @@ export const ProductDetail = ({ el, docs }) => {
                 <Typography variant="h6" component="h2">Төстэй бараанууд</Typography>
                 <Box className='similarproducts'>
                     {docs.slice(0, 3).map((doc, i) => {
-<<<<<<< HEAD
-                        return <Box className='a' key={i}><SingleProduct el={doc} p={1} /></Box>
-=======
                         return <Box onClick={() => setcounter(0)} className='a' key={i}><SingleProduct el={doc} p={1} /></Box>
->>>>>>> 4cabc157330897deb7f2d8b27d1f4ce3962bb985
                     })}
                 </Box>
             </Box>

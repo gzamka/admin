@@ -28,8 +28,8 @@ const Carousel = ({ docs }) => {
 			</Row>
 			<ReviewSlider {...sliderSettings} ref={setSliderRef}>
 				{docs?.map((el, index) => (
-					<Link key={index} to={`/products/${el.id}`}>
-                      <Cards el={el}/>
+					<Link onClick={()=>window.scrollTo(0, 0)} key={index} to={`/products/${el.id}`}>
+						<Cards el={el} />
 					</Link>
 				))}
 			</ReviewSlider>
