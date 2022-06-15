@@ -9,18 +9,17 @@ import { DocUpdate } from './Add_doc'
 export const AddProduct = ({ setaddproduct, num, product, setbool, bool, col, addproduct }) => {
     const id = bool && product.id
     const [image, setimage] = useState(bool ? product.img : [])
-    const [values, setValues] = useState({
-        title: bool ? product.title : "",
-        description: bool ? product.description : "",
-    });
+    const [values, setValues] = useState(bool ? product.title : "");
+    const [description, setdescription] = useState(bool ? product.description : "")
     const [open, setOpen] = useState(false);
     const fn = async () => {
         if (image.length === 0) return alert('You must add an image to post') /// if image didn't uploaded 
         if (image.length > 4) return alert("You can upload only 4 images at a time")
         setOpen(true)
         setimage('')
-        setValues({ title: "", description: "" })
-        await Add_doc({ values, image }, col)
+        setValues("")
+        setdescription("")
+        await Add_doc({ values, description, image }, col)
         setOpen(false)
         if (bool) setbool(false)
         if (addproduct) setaddproduct(false)
@@ -31,7 +30,7 @@ export const AddProduct = ({ setaddproduct, num, product, setbool, bool, col, ad
     }
     const update = async () => {
         if (image.length === 0) return alert("Your post doesn't have an image!")
-        await DocUpdate({ values, image, id }, col)
+        await DocUpdate({ values,description, image, id }, col)
         // if (bool) setbool(false)
     }
     return (
@@ -87,7 +86,7 @@ export const AddProduct = ({ setaddproduct, num, product, setbool, bool, col, ad
                     md={6}
                     xs={12}
                 >
-                    <AccountProfileDetails setValues={setValues} values={values} fn={fn} bool={bool} update={update} col={col} />
+                    <AccountProfileDetails setValues={setValues} description={description} setdescription={setdescription} values={values} fn={fn} bool={bool} update={update} col={col} />
                 </Grid>
             </Grid>
         </Container>

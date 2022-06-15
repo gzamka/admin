@@ -5,8 +5,8 @@ import Button from '@mui/material/Button';
 import { AddProduct } from '../../components/Addproducts'
 import { useState } from 'react';
 import { DeleteProduct } from '../Add_doc';
+import parse from "html-react-parser"
 export const ProductCard = ({ product, col }) => {
-  // console.log(product);
   const [bool, setbool] = useState(false)
   var timestamp = product.date
   var date = new Date(timestamp);
@@ -71,7 +71,7 @@ export const ProductCard = ({ product, col }) => {
                 color="textPrimary"
                 variant="h7"
               >
-                {product.description}
+                {parse(product.description)}
               </Typography>
             </Box>
           </Box>

@@ -18,7 +18,7 @@ const imgDelete = async (el) => {
     const desertRef = ref(storage, el.imgName);
     await deleteObject(desertRef)
 }
-export const Add_doc = async ({ values, image = [] }, col) => {
+export const Add_doc = async ({ values, image = [], description }, col) => {
     if (image[0] !== undefined) {
         let arr = []
         await Promise.all(
@@ -27,7 +27,8 @@ export const Add_doc = async ({ values, image = [] }, col) => {
                 arr.push(img)
             }))
         await addDoc(collection(db, col), {
-            ...values,
+            title: values,
+            description,
             date: Date.now(),
             img: arr,
         })
@@ -55,7 +56,7 @@ export const useGetItems = (col) => {
     }, [])
     return { docs }
 }
-export const DocUpdate = async ({ values, image, id }, col) => {
+export const DocUpdate = async ({ values, description, image, id }, col) => {
     let arr = []
     await Promise.all(image.map(async (el) => {
         if (el.base64) {
@@ -74,7 +75,8 @@ export const DocUpdate = async ({ values, image, id }, col) => {
         }
     })
     await setDoc(doc(db, col, id), {
-        ...values,
+        title: values,
+        description,
         img: arr,
         date: Date.now()
     })

@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-
+import parse from 'react-html-parser'
 export default function Cards({ el }) {
     return (
         <>
@@ -21,8 +21,8 @@ export default function Cards({ el }) {
                         <Typography gutterBottom variant="h5" component="div" sx={{ height: '60px', overflow: 'hidden' }}>
                             {el.title}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary" sx={{ height: '60px', overflowY: 'hidden' }}>
-                            {el.description}
+                        <Typography variant="body2" component="div" color="text.secondary" sx={{ height: '60px', overflowY: 'hidden' }}>
+                            {parse(el.description)}
                         </Typography>
                     </CardContent>
                 </CardActionArea>

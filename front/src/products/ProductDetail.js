@@ -2,6 +2,7 @@ import '../App.css'
 import { Button, Typography, Box } from '@mui/material';
 import { useState } from 'react';
 import { SingleProduct } from './SIngleProduct';
+import parse from "react-html-parser"
 import { useNavigate } from 'react-router-dom';
 export const ProductDetail = ({ el, docs }) => {
     const navigation = useNavigate()
@@ -13,14 +14,14 @@ export const ProductDetail = ({ el, docs }) => {
         if (counter > 0) setcounter(counter -= 1)
     }
     const contact = () => navigation('/contactus')
-    
+  console.log(el.img[counter]);
     return (
         <>
             <Box className='pContainer'>
                 <Box sx={style.subtainer}>
                     <div className="media">
                         <Box className='first'>
-                            <img alt="#" src={el?.img[counter].imgUrl} className="avatar" />
+                            <img alt="#" src={el.img[counter].imgUrl} className="avatar" />
                             <Box className='box'>
                                 <button className='lbtn' onClick={leftbtn} />
                                 <Box className='middle'>
@@ -37,11 +38,11 @@ export const ProductDetail = ({ el, docs }) => {
                             </Box>
                         </Box>
                         <Box className='second'>
-                            <Typography variant="h4" component="h2">
+                            <Typography variant="h5" component="h2">
                                 {el.title}
                             </Typography>
-                            <Typography variant="h6" component="h2" sx={style.description}>
-                                {el.description}
+                            <Typography variant="h6" component="h2" className='desc'>
+                                {parse(el.description)}
                             </Typography>
                             <Button sx={style.button} variant="contained" onClick={contact}>Contact us</Button>
                         </Box>
@@ -52,7 +53,7 @@ export const ProductDetail = ({ el, docs }) => {
                 <Typography variant="h6" component="h2">Төстэй бараанууд</Typography>
                 <Box className='similarproducts'>
                     {docs.slice(0, 3).map((doc, i) => {
-                        return <SingleProduct el={doc} key={i} p={1} />
+                        return <Box onClick={() => setcounter(0)} className='a' key={i}><SingleProduct el={doc} p={1} /></Box>
                     })}
                 </Box>
             </Box>
@@ -81,10 +82,7 @@ const style = {
         width: '80vw',
         margin: '0 auto',
         marginTop: '30px',
-        marginBottom: '80px',
-    },
-    description: {
-        color: 'black', marginTop: "15px", height: '350px', overflow: 'scroll'
+        marginBottom: '20%',
     },
     button: {
         position: 'absolute',
