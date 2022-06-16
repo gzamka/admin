@@ -11,8 +11,10 @@ const GlobalStyle = createGlobalStyle`
 
 export const Container = styled.div`
 	width: 100%;
+	display : flex;
+	align-items: center;
 	max-width: 1300px;
-	height: 100%;
+	height: 77%;
 	margin-right: auto;
 	margin-left: auto;
 	padding: 0 50px;
@@ -22,6 +24,7 @@ export const Container = styled.div`
 	}
 `;
 export const MainHeading = styled.h1`
+
 	font-size: clamp(2.3rem, 6vw, 4.5rem);
 	margin-bottom: 1rem;
 	color: ${({ inverse }) => (inverse ? '$403ae3' : '#fff')};
