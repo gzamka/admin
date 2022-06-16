@@ -41,9 +41,15 @@ a {
   background-repeat: no-repeat;
   border-radius: 4px;
   border: 1px solid black;
+  cursor: pointer;
   background-position: center;
 }
+.btn:hover{
+  background-color: #1976d2;
+  transition: 0.3s;
+}
 .lbtn {
+  cursor: pointer;
   width: 30px;
   height: 30px;
   margin-right: 10px;
@@ -53,6 +59,10 @@ a {
   border-radius: 4px;
   border: 1px solid black;
   background-position: center;
+}
+.lbtn:hover{
+  background-color: #1976d2;
+  transition: 0.3s;
 }
 .Newsimg {
   height: 250px;
