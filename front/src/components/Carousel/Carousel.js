@@ -13,7 +13,7 @@ import {
 
 const Carousel = ({ docs }) => {
 	const [sliderRef, setSliderRef] = useState(null);
-	console.log(sliderRef.slickNext);
+	console.log(sliderRef?.slickNext);
 	return (
 		<Section margin="auto" maxWidth="1280px" padding="50px 70px" inverse>
 			<Row justify="space-between" margin="1rem" wrap="wrap">
