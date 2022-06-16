@@ -205,7 +205,7 @@ a {
 .desc {
   margin-top: 30px;
   color: black;
-  height: 550px;
+  height: 514px;
   overflow-y: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
@@ -269,7 +269,7 @@ a {
   .second {
     width: 100%;
     margin-top: 50px;
-    height: 600px;
+    height: 623px;
     overflow-y: scroll;
   }
   .avatar {

@@ -14,7 +14,10 @@ export const ProductDetail = ({ el, docs }) => {
         if (counter > 0) setcounter(counter -= 1)
     }
     const imageClick = (i) => setcounter(i)
-    const contact = () => navigation('/contactus')
+    const contact = () => {
+        navigation('/contactus')
+        window.scrollTo(0, 0)
+    }
     return (
         <>
             <Box className='pContainer'>
@@ -38,13 +41,15 @@ export const ProductDetail = ({ el, docs }) => {
                             </Box>
                         </Box>
                         <Box className='second'>
-                            <Typography variant="h5" component="h2" sx={{ fontWeight: 'bold', height: "45px", borderBottom: "1px solid #E2E2E2"}}>
+                            <Typography variant="h5" component="h2" sx={{ fontWeight: 'bold', height: "45px", borderBottom: "1px solid #E2E2E2" }}>
                                 {el.title}
                             </Typography>
                             <Typography sx={{ marginTop: '10px' }} className='desc' variant="h6" component="h2">
                                 {parse(el.description)}
                             </Typography>
-                            <Button sx={style.button} variant="contained" onClick={contact}>Contact us</Button>
+                            <Box sx={{ display: 'flex', alignItems: 'center',height:'70px', justifyContent: 'flex-end' }}>
+                                <Button variant="contained" onClick={contact}>Contact us</Button>
+                            </Box>
                         </Box>
                     </div>
                 </Box>
@@ -84,9 +89,5 @@ const style = {
         marginTop: '30px',
         marginBottom: '40px',
     },
-    button: {
-        position: 'absolute',
-        right: '50px',
-        bottom: '30px',
-    }
+
 }
