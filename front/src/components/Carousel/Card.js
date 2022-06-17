@@ -6,7 +6,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import parse from 'react-html-parser'
+import { useAnimation } from 'framer-motion';
+import { ContentButton } from '../Content/ContentStyles';
+import { Box } from '@mui/system';
 export default function Cards({ el }) {
+    const initial = { y: 30 };
+	const animation = useAnimation();
+    const inverse=true
     return (
         <>
             <Card sx={{ maxWidth: 345 }}>
@@ -26,10 +32,20 @@ export default function Cards({ el }) {
                         </Typography>
                     </CardContent>
                 </CardActionArea>
-                <CardActions>
-                        <Button size="small" color="primary">
+                <CardActions sx={{display: "flex", justifyContent: 'center'}}>
+                        {/* <Button size="small" color="primary">
                             More information
-                        </Button>
+                        </Button> */}
+                        <Box sx={{marginBottom: '30px'}}>
+                        		<ContentButton
+								initial={initial}
+								transition={{ delay: 1, duration: 0.6 }}
+								animate={animation}
+								inverse={inverse}
+							>
+								More Information
+							</ContentButton>
+                            </Box>
                 </CardActions>
             </Card>
         </>

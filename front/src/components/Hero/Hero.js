@@ -6,7 +6,8 @@ import { HeroVideo, HeroSection } from './HeroStyles';
 const Hero = ({ language }) => {
 	return (
 		<HeroSection>
-			<HeroVideo src="./assets/hero.mp4" loop autoPlay muted />
+			<HeroVideo src="./assets/video.mp4" loop autoPlay muted />
+			<img src="/assets/background.jpg" alt="#" style={{width: '100vw',height: '100vh', position: 'absolute', top: '0' }}></img>
 			<Container>
 				<MainHeading>Mass Tech Company</MainHeading>
 				{/* <Typography variant="h4" component="div" sx={{ color: "white", textAlign: 'center' }}>

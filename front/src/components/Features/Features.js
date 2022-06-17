@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { sliderSettings } from '../../data/CarouselData';
-import { Container, Section } from '../../globalStyles';
+import { Container, Flex, Section } from '../../globalStyles';
 import Cards from '../Carousel/Card';
 import { ReviewSlider } from '../Carousel/CarouselStyles';
 import {
@@ -13,7 +13,7 @@ const Features = ({ news: { data } }) => {
 
 	return (
 		<Section smPadding="50px 10px" position="relative" inverse>
-			<Container>
+			<Flex>
 				<FeatureTextWrapper>
 					<FeatureTitle>News Line</FeatureTitle>
 				</FeatureTextWrapper>
@@ -24,7 +24,7 @@ const Features = ({ news: { data } }) => {
 						</Link>
 					})}
 				</ReviewSlider>
-			</Container>
+			</Flex>
 		</Section>
 	);
 };
