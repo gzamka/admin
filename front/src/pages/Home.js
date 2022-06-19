@@ -9,8 +9,8 @@ const Home = ({ docs, language,news }) => {
 		<>
 			<Hero language={language} />
 			<Carousel docs={docs} />
-			<Content {...heroOne} />
 			<Content {...heroTwo} />
+			<Content {...heroOne} />
 			<Content {...heroThree} />
 			<Features news={news} />
 		</>

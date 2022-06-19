@@ -5,14 +5,16 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  }
+  font-family: Lato,sans-serif; 
 `;
 
 export const Container = styled.div`
 	width: 100%;
+	display : flex;
+	// flex-direction: column;
+	align-items: center;
 	max-width: 1300px;
-	height: 100%;
+	height: 77%;
 	margin-right: auto;
 	margin-left: auto;
 	padding: 0 50px;
@@ -21,7 +23,23 @@ export const Container = styled.div`
 		padding: 0 30px;
 	}
 `;
+export const Flex=styled.div`
+width: 100%;
+display : flex;
+flex-direction: column;
+align-items: center;
+max-width: 1300px;
+height: 77%;
+margin-right: auto;
+margin-left: auto;
+padding: 0 50px;
+
+@media screen and (max-width: 960px) {
+	padding: 0 30px;
+}
+`;
 export const MainHeading = styled.h1`
+   z-index: 99;
 	font-size: clamp(2.3rem, 6vw, 4.5rem);
 	margin-bottom: 1rem;
 	color: ${({ inverse }) => (inverse ? '$403ae3' : '#fff')};
@@ -32,7 +50,7 @@ export const MainHeading = styled.h1`
 export const Section = styled.section`
 	padding: ${({ padding }) => (padding ? padding : '140px 0')};
 	margin: ${({ margin }) => (margin ? margin : '')};
-	background: ${({ inverse }) => (inverse ? 'white' : '#071c2f')};
+	background: ${({ inverse }) => (inverse ? 'white' : '#161C36')};
 	position: ${({ position }) => (position ? position : '')};
 	width: ${({ width }) => (width ? width : 'auto')};
 	min-width: ${({ minWidth }) => (minWidth ? minWidth : 'auto')};

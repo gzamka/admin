@@ -30,7 +30,7 @@ export const heroTwo = {
 
 export const heroThree = {
 	reverse: true,
-	inverse: true,
+	inverse: false,
 	topLine: {
 		text: 'Highly reputed brand',
 	},

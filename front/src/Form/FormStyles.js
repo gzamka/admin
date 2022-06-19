@@ -44,6 +44,7 @@ export const FormColumn = styled.div`
 `;
 
 export const FormRow = styled.div`
+   width: 100%;
 	display: flex;
 	justify-content: center;
 	margin: 0 -15px -15px -15px;

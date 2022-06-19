@@ -3,6 +3,7 @@ import { Container } from '../../globalStyles';
 import { Link } from 'react-router-dom';
 
 export const Nav = styled.nav`
+    // font-family: Lato,sans-serif;
 	background: transparent;
 	margin-bottom: -80px;
 	height: 80px;
@@ -15,7 +16,8 @@ export const Nav = styled.nav`
 	z-index: 50;
 	position: sticky;
 	width: 100%;
-	background-color: #071c2f;
+	--tw-bg-opacity: 1;
+    background-color: rgb(21 28 56/var(--tw-bg-opacity));
 	transition: background-color 0.3s ease-in;
 `;
 
