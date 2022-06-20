@@ -4,11 +4,37 @@ import { motion } from 'framer-motion';
 export const FeatureTitle = styled.h2`
 	text-align: center;
 	// font-size: clamp(1.3rem, 13vw, 3.1rem);
-	font-size: 70px;
+	font-size: 40px;
 	font-weight: bold;
 	line-height: 1.06;
 	letter-spacing: 0.4rem;
 	margin: auto;
+	text-transform: uppercase;
+	background-image: linear-gradient(
+	  -225deg,
+	  #231557 0%,
+	  #44107a 29%,
+	  #ff1361 67%,
+	  #fff800 100%
+	);
+	background-size: auto auto;
+	background-clip: border-box;
+	background-size: 200% auto;
+	color: #fff;
+	background-clip: text;
+	text-fill-color: transparent;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: textclip 2s linear infinite;
+	display: inline-block;
+		font-size: 60px;
+  }
+  
+  @keyframes textclip {
+	to {
+	  background-position: 200% center;
+	}
+  }
 `;
 
 export const FeatureTextWrapper = styled.div`
