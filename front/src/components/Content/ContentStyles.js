@@ -96,7 +96,7 @@ export const Subtitle = styled(motion.p)`
 	margin-bottom: 35px;
 	line-height: 24px;
 	color: ${({ inverse }) => (inverse ? '#6a6a6a' : 'white')};
-	height: 350px;
+	height: auto;
 	overflow-y: scroll;
 	-ms-overflow-style: none;
 	scrollbar-width: none;

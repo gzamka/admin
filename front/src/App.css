@@ -9,6 +9,24 @@ body {
   height: 200px;
   object-fit: contain;
 }
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+.btnProduct{
+  width: 56px;
+  height: 40px;
+  background-color: #E0E1E2;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
 .nav {
   display: flex;
   align-items: center;

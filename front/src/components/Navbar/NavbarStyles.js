@@ -13,7 +13,7 @@ export const Nav = styled.nav`
 	font-size: 1.5rem;
 	position: absolute;
 	top: 0;
-	z-index: 50;
+	z-index: 100;
 	position: sticky;
 	width: 100%;
 	--tw-bg-opacity: 1;

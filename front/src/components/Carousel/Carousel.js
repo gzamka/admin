@@ -10,7 +10,8 @@ import {
 	ButtonContainer,
 	ReviewSlider,
 } from './CarouselStyles';
-
+import '../../App.css'
+import { Box } from '@mui/system';
 const Carousel = ({ docs }) => {
 	const [sliderRef, setSliderRef] = useState(null);
 	return (
@@ -23,12 +24,22 @@ const Carousel = ({ docs }) => {
 					<IconContext.Provider value={{ size: '3rem', color: '#1d609c' }}>
 						<FaArrowCircleLeft onClick={sliderRef?.slickPrev} />
 						<FaArrowCircleRight onClick={sliderRef?.slickNext} />
+						{/* <Box className="btnProduct" onClick={sliderRef?.slickPrev}>
+							<span className="material-symbols-outlined">
+								arrow_back_ios
+							</span>
+						</Box>
+						<Box onClick={sliderRef?.slickNext} className="btnProduct">
+							<span className="material-symbols-outlined">
+								arrow_forward_ios
+							</span>
+						</Box> */}
 					</IconContext.Provider>
 				</ButtonContainer>
 			</Row>
 			<ReviewSlider {...sliderSettings} ref={setSliderRef}>
 				{docs?.map((el, index) => (
-					<Link onClick={()=>window.scrollTo(0, 0)} key={index} to={`/products/${el.id}`}>
+					<Link onClick={() => window.scrollTo(0, 0)} key={index} to={`/products/${el.id}`}>
 						<Cards el={el} />
 					</Link>
 				))}

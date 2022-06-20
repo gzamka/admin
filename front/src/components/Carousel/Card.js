@@ -36,7 +36,7 @@ export default function Cards({ el }) {
                         {/* <Button size="small" color="primary">
                             More information
                         </Button> */}
-                        <Box sx={{marginBottom: '30px'}}>
+                        {/* <Box sx={{marginBottom: '30px'}}>
                         		<ContentButton
 								initial={initial}
 								transition={{ delay: 1, duration: 0.6 }}
@@ -45,7 +45,7 @@ export default function Cards({ el }) {
 							>
 								More Information
 							</ContentButton>
-                            </Box>
+                            </Box> */}
                 </CardActions>
             </Card>
         </>
