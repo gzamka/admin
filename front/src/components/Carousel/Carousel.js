@@ -3,12 +3,13 @@ import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 import { sliderSettings } from '../../data/CarouselData';
 import { Row, Section } from '../../globalStyles';
-import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import Cards from './Card'
 import {
 	ButtonContainer,
 	ReviewSlider,
+	TypoStyle,
 } from './CarouselStyles';
 
 const Carousel = ({ docs }) => {
@@ -16,9 +17,9 @@ const Carousel = ({ docs }) => {
 	return (
 		<Section margin="auto" maxWidth="1280px" padding="50px 70px" inverse>
 			<Row justify="space-between" margin="1rem" wrap="wrap">
-				<Typography variant="h3" component="div" sx={{ marginLeft: '10px' }}>
-					Products
-				</Typography>
+				<TypoStyle variant="h4" component="div">
+				Products
+				</TypoStyle>
 				<ButtonContainer>
 					<IconContext.Provider value={{ size: '3rem', color: '#1d609c' }}>
 						<FaArrowCircleLeft onClick={sliderRef?.slickPrev} />
