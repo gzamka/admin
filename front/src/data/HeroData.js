@@ -24,7 +24,7 @@ export const heroTwo = {
 
 	linkTo: '/more',
 	imgStart: 'start',
-	img: './assets/svg/Connection.svg',
+	img: './assets/svg/img.svg',
 	start: 'true',
 };
 

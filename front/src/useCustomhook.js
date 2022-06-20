@@ -1,18 +1,21 @@
 import { db } from "./firebase/firebase"
-import { collection, getDocs } from "firebase/firestore";
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react";
 export const useCustomhook = (col) => {
     const [data, setdocs] = useState([])
     useEffect(() => {
-        (async () => {
-            if (col) {
-                const docs = await getDocs(collection(db, col))
+        if (col) {
+            const queried = query(collection(db, col), orderBy("date", "desc"));
+            const sub = onSnapshot(queried, (snapshot) => {
                 setdocs([])
-                docs.forEach((doc) => {
-                    setdocs((data) => [...data, { id: doc.id, ...doc.data()}])
+                snapshot.forEach((doc) => {
+                    setdocs((docs) => [...docs, { ...doc.data(), id: doc.id }])
                 })
-            }
-        })()
+            })
+            return (() => {
+                sub()
+            })
+        }
     }, [])
     return { data }
 }

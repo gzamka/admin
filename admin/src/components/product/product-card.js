@@ -21,6 +21,7 @@ export const ProductCard = ({ product, col }) => {
     a.pop()
   })
   if (bool) return <AddProduct product={product} bool={bool} setbool={setbool} col={col} num={1} />
+  // console.log(product.img);
   return (
     <>
       <Card
@@ -50,6 +51,7 @@ export const ProductCard = ({ product, col }) => {
                       src={product.img && el.imgUrl}
                       variant="square"
                       sx={{
+                        objectFit: 'contain',
                         width: '95px',
                         height: '95px',
                         borderRadius: "10px"

@@ -1,4 +1,5 @@
 import { Avatar, Box, Typography } from '@mui/material'
+import parse from "react-html-parser"
 import React from 'react'
 export default function SpecificNews({ el }) {
     const { img, title, description, date } = el
@@ -13,7 +14,7 @@ export default function SpecificNews({ el }) {
                 <Box sx={{ color: 'gray' }}>{convertedDate}</Box>
                 <Avatar alt="Remy Sharp" variant="square" src={img[0].imgUrl} sx={styles.img} />
                 <Typography variant="h6" sx={styles.description}>
-                    {description}
+                    {parse(description)}
                 </Typography>
             </Box>
         </Box>

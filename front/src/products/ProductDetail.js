@@ -77,7 +77,7 @@ const style = {
         width: '95%', height: '90%'
     },
     image: {
-        width: "120px", height: '120px'
+        width: "120px", height: '120px', objectFit: 'contain'
     },
     containerimg1: {
         minWidth: "130px", height: '130px', border: '1px solid black', display: 'flex',

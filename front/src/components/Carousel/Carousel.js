@@ -19,12 +19,12 @@ const Carousel = ({ docs }) => {
 		<Section margin="auto" maxWidth="1280px" padding="50px 70px" inverse>
 			<Row justify="space-between" margin="1rem" wrap="wrap">
 				<TypoStyle variant="h4" component="div">
-				Products
+					Products
 				</TypoStyle>
 				<ButtonContainer>
 					<IconContext.Provider value={{ size: '3rem', color: '#1d609c' }}>
-						<FaArrowCircleLeft onClick={sliderRef?.slickPrev} />
-						<FaArrowCircleRight onClick={sliderRef?.slickNext} />
+						<FaArrowCircleLeft style={{ color: '#161C36' }} onClick={sliderRef?.slickPrev} />
+						<FaArrowCircleRight style={{ color: '#161C36' }} onClick={sliderRef?.slickNext} />
 						{/* <Box className="btnProduct" onClick={sliderRef?.slickPrev}>
 							<span className="material-symbols-outlined">
 								arrow_back_ios

@@ -22,6 +22,7 @@ export default function Cards({ el }) {
                         height="260px"
                         image={el.img[0].imgUrl}
                         alt="green iguana"
+                        style={{objectFit: 'contain'}}
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div" sx={{ height: '60px', overflow: 'hidden' }}>
