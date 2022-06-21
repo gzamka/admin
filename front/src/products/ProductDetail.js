@@ -67,8 +67,11 @@ export const ProductDetail = ({ el, docs }) => {
 }
 const style = {
     title: {
-        fontWeight: 'bold', height: "auto", borderBottom: "1px solid #E2E2E2",
-        maxHeight: '70px'
+        height: "auto", borderBottom: "1px solid #E2E2E2", 
+        fontFamily: "Commissioner, sans-serif",
+        fontSize: "20px",
+        fontWeight: "600",
+        lineHeight: "1.3",
     },
     imgcontainer: {
         marginLeft: '10px', width: "120px", height: '120px'

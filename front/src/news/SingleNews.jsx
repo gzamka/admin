@@ -17,7 +17,12 @@ export default function SingleNews({ el }) {
                     {!bool ? <Skeleton variant="rectangular" sx={styles.skeleton} /> :
                         <img alt="#" src={img[0].imgUrl} className="Newsimg" />}
                     <Box sx={{ paddingTop: '10px' }}>
-                        <Typography variant="h6" component="h6">
+                        <Typography variant="h6" component="h6" sx={{
+                            fontFamily: "Commissioner, sans-serif",
+                            fontSize: "20px",
+                            fontWeight: "600",
+                            lineHeight: "1.3",
+                        }}>
                             {title}
                         </Typography>
                         <Box sx={styles.date}>{convertedDate}</Box>

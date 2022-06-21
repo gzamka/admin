@@ -9,7 +9,7 @@ export const SingleProduct = ({ el, a }) => {
                 <Box className={a === 1 ? "a" : "container"}>
                     <img alt="#" src={img[0].imgUrl} className="img" />
                     <Box sx={{ height: '70px', overflowY: 'hidden', display: 'flex', alignItems: 'center' }}>
-                        <Typography variant="h5" component="h5" sx={{ height: '70px' }} >
+                        <Typography variant="h5" component="h5" sx={styles.title} >
                             {title}
                         </Typography>
                     </Box>
@@ -18,4 +18,13 @@ export const SingleProduct = ({ el, a }) => {
         </>
     )
 
+}
+const styles = {
+    title: {
+        fontFamily: "Commissioner, sans-serif",
+        fontSize: "20px",
+        fontWeight: "600",
+        lineHeight: "1.3",
+        height: '70px',
+    }
 }

@@ -22,7 +22,7 @@ export default function SpecificNews({ el }) {
 }
 const styles = {
     description: {
-        width: '95%', margin: '0 auto', marginTop: '15px'
+        width: '95%', margin: '0 auto', marginTop: '15px',
     },
     img: {
         width: '100%', height: '65vh'
