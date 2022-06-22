@@ -13,6 +13,8 @@ import {
 } from "./FormStyles";
 import emailjs from "@emailjs/browser";
 import { Container } from "../globalStyles";
+import TextField from "@mui/material/TextField";
+import Button from '@mui/material/Button';
 
 const Form = () => {
   const form = useRef();
@@ -28,14 +30,14 @@ const Form = () => {
   };
 
   const formData = [
-    {
-      label: "Product Name",
-      value: name,
-      name: "to_name",
-      onChange: (e) => setName(e.target.value),
-      type: "text",
-      pholder: 'Product Name'
-    },
+    // {
+    //   label: "Product Name",
+    //   value: name,
+    //   name: "to_name",
+    //   onChange: (e) => setName(e.target.value),
+    //   type: "text",
+    //   pholder: 'Product Name'
+    // },
 
     {
       label: "Email",
@@ -43,7 +45,7 @@ const Form = () => {
       value: email,
       onChange: (e) => setEmail(e.target.value),
       type: "email",
-      pholder: "Enter your email"
+      pholder: "Enter your email",
     },
     {
       label: "Product",
@@ -51,7 +53,7 @@ const Form = () => {
       name: "message",
       onChange: (e) => setProduct(e.target.value),
       type: "text",
-      pholder: "What product do you interested in?"
+      pholder: "What product do you interested in?",
     },
   ];
 
@@ -82,9 +84,8 @@ const Form = () => {
           console.log(error.text);
           setError("Error");
         }
-
       );
-  }
+  };
 
   return (
     <FormSection>
@@ -95,19 +96,31 @@ const Form = () => {
             <FormWrapper ref={form} onSubmit={sendEmail}>
               {formData.map((el, index) => (
                 <FormInputRow key={index}>
-                  <FormLabel Label>{el.label}</FormLabel>
-                  <FormInput
+                  {/* <FormLabel Label>{el.label}</FormLabel> */}
+                  {/* <FormInput
                     required
                     name={el.name}
                     type={el.type}
                     placeholder={el.pholder}
                     value={el.value}
                     onChange={el.onChange}
+                  /> */}
+                  <TextField
+                    required
+                    name={el.name}
+                    type={el.type}
+                    placeholder={el.pholder}
+                    value={el.value}
+                    onChange={el.onChange}
+                    id="outlined-textarea"
+                    label={el.label}
+                    multiline
                   />
                 </FormInputRow>
               ))}
 
-              <FormButton type="submit">Submit</FormButton>
+              {/* <FormButton type="submit">Submit</FormButton> */}
+              <Button sx={{width: "100%"}} variant="contained">Submit</Button>
             </FormWrapper>
 
             {error && (
