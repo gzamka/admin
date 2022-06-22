@@ -21,7 +21,8 @@ export const SingleProduct = ({ el, a }) => {
 }
 const styles = {
     title: {
-        fontFamily: "Commissioner, sans-serif",
+        // fontFamily: "Commissioner, sans-serif",
+        marginTop: '30px',
         fontSize: "20px",
         fontWeight: "600",
         lineHeight: "1.3",

@@ -12,7 +12,7 @@ export default function SpecificNews({ el }) {
                     {title}
                 </Typography>
                 <Box sx={{ color: 'gray' }}>{convertedDate}</Box>
-                <Avatar alt="Remy Sharp" variant="square" src={img[0].imgUrl} sx={styles.img} />
+                <img alt="Remy Sharp" variant="square" src={img[0].imgUrl} className="newsImage" />
                 <Typography variant="h6" sx={styles.description}>
                     {parse(description)}
                 </Typography>
@@ -25,6 +25,7 @@ const styles = {
         width: '95%', margin: '0 auto', marginTop: '15px',
     },
     img: {
-        width: '100%', height: '65vh'
-    }
+        width: '100%', height: '300px'
+    },
+    
 }

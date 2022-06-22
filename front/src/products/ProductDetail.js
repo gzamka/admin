@@ -7,12 +7,6 @@ import { useNavigate } from 'react-router-dom';
 export const ProductDetail = ({ el, docs }) => {
     const navigation = useNavigate()
     let [counter, setcounter] = useState(0)
-    const rightbtn = () => {
-        if (counter < el.img.length - 1) setcounter(counter += 1)
-    }
-    const leftbtn = () => {
-        if (counter > 0) setcounter(counter -= 1)
-    }
     const imageClick = (i) => setcounter(i)
     const contact = () => {
         navigation('/contactus')
@@ -26,7 +20,6 @@ export const ProductDetail = ({ el, docs }) => {
                         <Box className='first'>
                             <img alt="#" src={el.img[counter].imgUrl} className="avatar" />
                             <Box className='box'>
-                                {/* <button className='lbtn' onClick={leftbtn} /> */}
                                 <Box className='middle'>
                                     {el.img.map((element, i) => {
                                         let a = i === counter ? <Box onClick={() => imageClick(i)} sx={style.containerimg1} key={i}>
@@ -37,7 +30,6 @@ export const ProductDetail = ({ el, docs }) => {
                                         return a
                                     })}
                                 </Box>
-                                {/* <button className='btn' onClick={rightbtn} /> */}
                             </Box>
                         </Box>
                         <Box className='second'>
@@ -48,7 +40,7 @@ export const ProductDetail = ({ el, docs }) => {
                                 {parse(el.description)}
                             </Typography>
                             <Box className="contactbtn">
-                                <Button variant="contained" onClick={contact}>Contact us</Button>
+                                <Button sx={style.btn} variant="contained" onClick={contact}>Contact us</Button>
                             </Box>
                         </Box>
                     </div>
@@ -66,31 +58,34 @@ export const ProductDetail = ({ el, docs }) => {
     )
 }
 const style = {
-    title: {
-        height: "auto", borderBottom: "1px solid #E2E2E2", 
+    btn: {
+      backgroundColor: "#161C36"
+    },
+title: {
+    height: "auto", borderBottom: "1px solid #E2E2E2",
         fontFamily: "Commissioner, sans-serif",
-        fontSize: "20px",
-        fontWeight: "600",
-        lineHeight: "1.3",
+            fontSize: "20px",
+                fontWeight: "600",
+                    lineHeight: "1.3",
     },
-    imgcontainer: {
-        marginLeft: '10px', width: "120px", height: '120px'
-    },
-    subtainer: {
-        width: '95%', height: '90%'
-    },
-    image: {
-        width: "120px", height: '120px', objectFit: 'contain'
-    },
-    containerimg1: {
-        minWidth: "130px", height: '130px', border: '1px solid black', display: 'flex',
+imgcontainer: {
+    marginLeft: '10px', width: "120px", height: '120px'
+},
+subtainer: {
+    width: '95%', height: '90%'
+},
+image: {
+    width: "120px", height: '120px', objectFit: 'contain'
+},
+containerimg1: {
+    minWidth: "130px", height: '130px', border: '1px solid black', display: 'flex',
         justifyContent: 'center', alignItems: 'center', marginLeft: '10px'
-    },
-    center: {
-        width: '80vw',
+},
+center: {
+    width: '80vw',
         margin: '0 auto',
-        marginTop: '30px',
-        marginBottom: '40px',
+            marginTop: '30px',
+                marginBottom: '40px',
     },
 
 }

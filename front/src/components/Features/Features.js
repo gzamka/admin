@@ -20,7 +20,7 @@ const Features = ({ news: { data } }) => {
 				<ReviewSlider {...sliderSettings}>
 					{data?.slice(0, 4).map((el, i) => {
 						return <Link onClick={() => window.scrollTo(0, 0)} key={i} to={`/news/${el.id}`}>
-							<Cards el={el} news={data} />
+							<Cards el={el} news={data} product={1} />
 						</Link>
 					})}
 				</ReviewSlider>
