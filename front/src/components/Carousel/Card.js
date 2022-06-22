@@ -1,15 +1,10 @@
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import parse from 'react-html-parser'
-import { useAnimation } from 'framer-motion';
 export default function Cards({ el, product }) {
-    const initial = { y: 30 };
-    const animation = useAnimation();
-    const inverse = true
     return (
         <>
             <Card sx={{ maxWidth: 345 }}>

@@ -45,10 +45,11 @@ export const FormColumn = styled.div`
 `;
 
 export const FormRow = styled.div`
+margin: 0 auto;
    width: 100%;
 	display: flex;
 	justify-content: center;
-	margin: 0 -15px -15px -15px;
+	// margin: 0 -15px -15px -15px;
 	flex-wrap: wrap;
 	align-items: center;
 `;

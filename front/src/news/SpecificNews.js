@@ -1,4 +1,4 @@
-import { Avatar, Box, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import parse from "react-html-parser"
 import React from 'react'
 export default function SpecificNews({ el }) {

@@ -3,7 +3,6 @@ import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 import { sliderSettings } from '../../data/CarouselData';
 import { Row, Section } from '../../globalStyles';
-// import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import Cards from './Card'
 import {
@@ -12,7 +11,6 @@ import {
 	TypoStyle,
 } from './CarouselStyles';
 import '../../App.css'
-import { Box } from '@mui/system';
 const Carousel = ({ docs }) => {
 	const [sliderRef, setSliderRef] = useState(null);
 	return (
@@ -25,16 +23,6 @@ const Carousel = ({ docs }) => {
 					<IconContext.Provider value={{ size: '3rem', color: '#1d609c' }}>
 						<FaArrowCircleLeft style={{ color: '#161C36' }} onClick={sliderRef?.slickPrev} />
 						<FaArrowCircleRight style={{ color: '#161C36' }} onClick={sliderRef?.slickNext} />
-						{/* <Box className="btnProduct" onClick={sliderRef?.slickPrev}>
-							<span className="material-symbols-outlined">
-								arrow_back_ios
-							</span>
-						</Box>
-						<Box onClick={sliderRef?.slickNext} className="btnProduct">
-							<span className="material-symbols-outlined">
-								arrow_forward_ios
-							</span>
-						</Box> */}
 					</IconContext.Provider>
 				</ButtonContainer>
 			</Row>

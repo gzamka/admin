@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { sliderSettings } from '../../data/CarouselData';
-import { Container, Flex, Section } from '../../globalStyles';
+import { Flex, Section } from '../../globalStyles';
 import Cards from '../Carousel/Card';
 import { ReviewSlider } from '../Carousel/CarouselStyles';
 import {

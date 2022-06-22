@@ -2,13 +2,10 @@ import React, { useState, useRef } from "react";
 import {
   FormColumn,
   FormWrapper,
-  FormInput,
   FormSection,
   FormRow,
-  FormLabel,
   FormInputRow,
   FormMessage,
-  FormButton,
   FormTitle,
 } from "./FormStyles";
 import emailjs from "@emailjs/browser";
@@ -30,15 +27,6 @@ const Form = () => {
   };
 
   const formData = [
-    // {
-    //   label: "Product Name",
-    //   value: name,
-    //   name: "to_name",
-    //   onChange: (e) => setName(e.target.value),
-    //   type: "text",
-    //   pholder: 'Product Name'
-    // },
-
     {
       label: "Email",
       name: "Email",
@@ -96,15 +84,6 @@ const Form = () => {
             <FormWrapper ref={form} onSubmit={sendEmail}>
               {formData.map((el, index) => (
                 <FormInputRow key={index}>
-                  {/* <FormLabel Label>{el.label}</FormLabel> */}
-                  {/* <FormInput
-                    required
-                    name={el.name}
-                    type={el.type}
-                    placeholder={el.pholder}
-                    value={el.value}
-                    onChange={el.onChange}
-                  /> */}
                   <TextField
                     required
                     name={el.name}
@@ -118,9 +97,7 @@ const Form = () => {
                   />
                 </FormInputRow>
               ))}
-
-              {/* <FormButton type="submit">Submit</FormButton> */}
-              <Button sx={{width: "100%"}} variant="contained">Submit</Button>
+              <Button sx={{ width: "100%", height: '60px' }} variant="contained">Submit</Button>
             </FormWrapper>
 
             {error && (
