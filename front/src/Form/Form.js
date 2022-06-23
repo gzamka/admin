@@ -15,7 +15,7 @@ import Button from '@mui/material/Button';
 
 const Form = () => {
   const form = useRef();
-  const [name, setName] = useState("");
+  // const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [product, setProduct] = useState("");
   const [error, setError] = useState(null);
@@ -47,6 +47,8 @@ const Form = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
+
+    console.log(product, email)
     emailjs
       .sendForm(
         "service_482lsfq",
@@ -55,7 +57,6 @@ const Form = () => {
         "9Ti0nKXv17k0CnkO2",
         {
           to_name: "Mass tech",
-          from_name: name,
           message: product,
           Email: email,
         }
@@ -63,7 +64,7 @@ const Form = () => {
       .then(
         (result) => {
           setEmail("");
-          setName("");
+          // setName("");
           setProduct("");
           setSuccess("Succesfully submitted");
           console.log(result.text);
@@ -72,7 +73,7 @@ const Form = () => {
           console.log(error.text);
           setError("Error");
         }
-      );
+      )
   };
 
   return (
@@ -97,7 +98,7 @@ const Form = () => {
                   />
                 </FormInputRow>
               ))}
-              <Button sx={{ width: "100%", height: '60px' }} variant="contained">Submit</Button>
+              <Button type="Submit" onClick={sendEmail} sx={{ width: "100%", height: '60px', bgcolor: '#161C36' }} variant="contained">Submit</Button>
             </FormWrapper>
 
             {error && (
