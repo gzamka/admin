@@ -33,7 +33,7 @@ const Navbar = ({ language, handleChange }) => {
 						{data.map((el, index) => {
 							return <NavClick key={index} setShow={setShow} el={el} />
 						})}
-						<FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+						{/* <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
 							<Select
 								labelId="demo-simple-select-standard-label"
 								id="demo-simple-select-standard"
@@ -49,7 +49,7 @@ const Navbar = ({ language, handleChange }) => {
 									<img src={Usa} alt="#" style={style.img} />
 								</MenuItem>
 							</Select>
-						</FormControl>
+						</FormControl> */}
 					</NavMenu>
 				</NavbarContainer>
 			</Nav>
