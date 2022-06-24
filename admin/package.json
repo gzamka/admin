@@ -6,7 +6,7 @@
   "private": false,
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "export": "next export",
     "lint": "next lint",
@@ -27,7 +27,7 @@
     "@mui/x-data-grid": "^5.11.1",
     "chart.js": "^3.5.1",
     "date-fns": "^2.25.0",
-    "firebase": "^9.8.1",
+    "firebase": "^9.8.4",
     "formik": "^2.1.5",
     "history": "^5.0.0",
     "html-react-parser": "^1.4.14",
