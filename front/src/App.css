@@ -58,6 +58,8 @@ font-family: 'Vazirmatn', sans-serif;
 
   }
 
+
+  /* nav hover  */
   .nav:hover {
     color: #f56850;
   }
@@ -73,6 +75,8 @@ font-family: 'Vazirmatn', sans-serif;
 .nav:hover:after { 
   transform: scaleX(1); 
 }
+
+
 
 .activeNav {
   /* border-bottom: 2px solid #f56850; */
