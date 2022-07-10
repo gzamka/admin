@@ -66,6 +66,7 @@ export const NavMenu = styled.ul`
 	list-style: none;
 	text-align: center;
 	width: 100%;
+	font-size: 20px;
 
 	@media screen and (max-width: 960px) {
 		flex-direction: column;

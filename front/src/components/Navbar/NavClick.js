@@ -12,7 +12,7 @@ export default function NavClick({ el, setShow }) {
     };
     return (
         <>
-            <NavItem>
+            <NavItem className='sans'>
                 {<div className={path === el.to ? "activeNav" : "nav"} onClick={() => closeMobileMenu(el.to)}>
                     {el.text}
                 </div>}
